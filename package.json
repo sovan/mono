@@ -2,7 +2,9 @@
   "name": "@mono/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "dev": "concurrently \"nx serve backend\" \"nx serve frontend\""
+  },
   "private": true,
   "dependencies": {
     "@nestjs/common": "^11.0.0",
@@ -55,6 +57,7 @@
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "babel-jest": "^30.0.2",
+    "concurrently": "^9.2.1",
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^10.0.0",
     "eslint-plugin-import": "2.31.0",
