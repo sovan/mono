@@ -1,0 +1,33 @@
+{
+    "brand": {
+        "projectName": "Vodafone"
+    },
+    "navBarLink": [
+        {
+            "type": "link",
+            "name": "Home",
+            "linkTo": "home"
+        },
+        {
+            "type": "link",
+            "name": "About Us",
+            "linkTo": "about-us"
+        },
+        {
+            "type": "dropdown",
+            "name": "Dropdown",
+            "items": [
+                {
+                    "type": "link",
+                    "name": "Pages",
+                    "linkTo": "pages"
+                },
+                {
+                    "type": "link",
+                    "name": "About Us",
+                    "linkTo": "about-us"
+                }
+            ]
+        }
+    ]
+}

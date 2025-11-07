@@ -1,0 +1,339 @@
+[
+    {
+        "type": "container",
+        "contains": [
+            {
+                "type": "row",
+                "contains": [
+                    {
+                        "type": "col",
+                        "size": "12",
+                        "contains": [
+                            {
+                                "type": "form",
+                                "contains": [
+                                    {
+                                        "type": "row",
+                                        "contains": [
+                                            {
+                                                "type": "col",
+                                                "size": "4",
+                                                "contains": [
+                                                    {
+                                                        "type": "input",
+                                                        "inputType": "text",
+                                                        "name": "fname",
+                                                        "label": "Your first name",
+                                                        "validation": {
+                                                            "required": "First Name required."
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "col",
+                                                "size": "4",
+                                                "contains": [
+                                                    {
+                                                        "type": "input",
+                                                        "inputType": "password",
+                                                        "name": "password",
+                                                        "label": "Password",
+                                                        "validation": {
+                                                            "required": "Pasword required."
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "col",
+                                                "size": "4",
+                                                "contains": [
+                                                    {
+                                                        "type": "input",
+                                                        "inputType": "textarea",
+                                                        "name": "description",
+                                                        "label": "Descroption",
+                                                        "validation": {
+                                                            "required": "Descriptions required."
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "col",
+                                                "size": "4",
+                                                "contains": [
+                                                    {
+                                                        "type": "select",
+                                                        "name": "dataselect",
+                                                        "label": "Select data",
+                                                        "validation": {
+                                                            "required": "Name required."
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "col",
+                                                "size": "4",
+                                                "contains": [
+                                                    {
+                                                        "type": "check",
+                                                        "name": "likes",
+                                                        "label": "Likes",
+                                                        "validation": {
+                                                            "required": "Likes required."
+                                                        },
+                                                        "contains": [
+                                                            {
+                                                                "type": "row",
+                                                                "contains": [
+                                                                    {
+                                                                        "type": "col",
+                                                                        "size": "3",
+                                                                        "contains": [
+                                                                            {
+                                                                                "type": "tick",
+                                                                                "label": "Cricket",
+                                                                                "value": "C"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "col",
+                                                                        "size": "3",
+                                                                        "contains": [
+                                                                            {
+                                                                                "type": "tick",
+                                                                                "label": "Football",
+                                                                                "value": "F"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "col",
+                                                                        "size": "3",
+                                                                        "contains": [
+                                                                            {
+                                                                                "type": "tick",
+                                                                                "label": "Hokey",
+                                                                                "value": "H"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "col",
+                                                                        "size": "3",
+                                                                        "contains": [
+                                                                            {
+                                                                                "type": "tick",
+                                                                                "label": "Khoko",
+                                                                                "value": "K"
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "col",
+                                                "size": "4",
+                                                "contains": [
+                                                    {
+                                                        "type": "radio",
+                                                        "name": "interest",
+                                                        "label": "Interest",
+                                                        "validation": {
+                                                            "required": "Likes required."
+                                                        },
+                                                        "contains": [
+                                                            {
+                                                                "type": "row",
+                                                                "contains": [
+                                                                    {
+                                                                        "type": "col",
+                                                                        "size": "3",
+                                                                        "contains": [
+                                                                            {
+                                                                                "type": "tick",
+                                                                                "label": "Cricket",
+                                                                                "value": "C"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "col",
+                                                                        "size": "3",
+                                                                        "contains": [
+                                                                            {
+                                                                                "type": "tick",
+                                                                                "label": "Football",
+                                                                                "value": "F"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "col",
+                                                                        "size": "3",
+                                                                        "contains": [
+                                                                            {
+                                                                                "type": "tick",
+                                                                                "label": "Hokey",
+                                                                                "value": "H"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "col",
+                                                                        "size": "3",
+                                                                        "contains": [
+                                                                            {
+                                                                                "type": "tick",
+                                                                                "label": "Khoko",
+                                                                                "value": "K"
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "row",
+                                        "contains": [
+                                            {
+                                                "type": "col",
+                                                "size": "12",
+                                                "contains": [
+                                                    {
+                                                        "type": "button",
+                                                        "buttonType": "submit",
+                                                        "buttonText": "Submit"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "col",
+                        "size": "12",
+                        "contains": [
+                            {
+                                "type": "accordion",
+                                "contains": [
+                                    {
+                                        "type": "col",
+                                        "size": "12",
+                                        "contains": [
+                                            {
+                                                "type": "text",
+                                                "text": "List pages"
+                                            },
+                                            {
+                                                "type": "button",
+                                                "buttonText": "A Button"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "button",
+                                        "buttonText": "Another Button"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "col",
+                        "contains": [
+                            {
+                                "type": "text",
+                                "text": "List all the created pages",
+                                "size": "10"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "col",
+                        "size": "2",
+                        "contains": [
+                            {
+                                "type": "button",
+                                "buttonText": "Add Page"
+                            },
+                            {
+                                "type": "button",
+                                "buttonText": "Del"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "type": "container",
+        "contains": [
+            {
+                "type": "list",
+                "operations": {
+                    "contains": [
+                        {
+                            "type": "button",
+                            "buttonText": "Edit"
+                        },
+                        {
+                            "type": "link",
+                            "linkText": "Delete"
+                        }
+                    ]
+                },
+                "listHeader": [
+                    "First name",
+                    "Last name",
+                    "Age",
+                    "Education",
+                    "Operation"
+                ],
+                "listRecord": [
+                    [
+                        "Sovan",
+                        "Dey",
+                        "25",
+                        "MCA"
+                    ],
+                    [
+                        "Luna",
+                        "Masanta",
+                        "31",
+                        "BBA"
+                    ],
+                    [
+                        "Sannidhya",
+                        "Dey",
+                        "9",
+                        "4+"
+                    ],
+                    [
+                        "Samriddha",
+                        "Dey",
+                        "0+",
+                        "Not educated"
+                    ]
+                ]
+            }
+        ]
+    }
+]

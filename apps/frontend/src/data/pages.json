@@ -1,0 +1,87 @@
+[
+    {
+        "type": "container",
+        "contains": [
+            {
+                "type": "row",
+                "contains": [
+                    {
+                        "type": "col",
+                        "contains": [
+                            {
+                                "type": "text",
+                                "text": "List all the created pages",
+                                "size": "10"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "col",
+                        "size": "2",
+                        "contains": [
+                            {
+                                "type": "button",
+                                "buttonText": "Add Page",
+                                "act": "link",
+                                "linkTo": "/pages/add"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "type": "container",
+        "contains": [
+            {
+                "type": "list",
+                "operations": {
+                    "contains": [
+                        {
+                            "type": "button",
+                            "buttonText": "Edit"
+                        },
+                        {
+                            "type": "link",
+                            "linkText": "Delete"
+                        }
+                    ]
+                },
+                "listHeader": [
+                    "First name",
+                    "Last name",
+                    "Age",
+                    "Education",
+                    "Operation"
+                ],
+                "listRecord": [
+                    [
+                        "Sovan",
+                        "Dey",
+                        "25",
+                        "MCA"
+                    ],
+                    [
+                        "Luna",
+                        "Masanta",
+                        "31",
+                        "BBA"
+                    ],
+                    [
+                        "Sannidhya",
+                        "Dey",
+                        "9",
+                        "4+"
+                    ],
+                    [
+                        "Samriddha",
+                        "Dey",
+                        "0+",
+                        "Not educated"
+                    ]
+                ]
+            }
+        ]
+    }
+]

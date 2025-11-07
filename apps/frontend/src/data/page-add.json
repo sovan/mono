@@ -1,0 +1,69 @@
+[
+    {
+        "type": "container",
+        "contains": [
+            {
+                "type": "row",
+                "contains": [
+                    {
+                        "type": "col",
+                        "contains": [
+                            {
+                                "type": "text",
+                                "text": "Add a Page",
+                                "size": "12"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "col",
+                        "size": "12",
+                        "contains": [
+                            {
+                                "type": "form",
+                                "act": "create-json",
+                                "contains": [
+                                    {
+                                        "type": "row",
+                                        "contains": [
+                                            {
+                                                "type": "col",
+                                                "size": "4",
+                                                "contains": [
+                                                    {
+                                                        "type": "input",
+                                                        "inputType": "text",
+                                                        "name": "pageUrl",
+                                                        "label": "Page URL",
+                                                        "validation": {
+                                                            "required": "Page URL required."
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "row",
+                                        "contains": [
+                                            {
+                                                "type": "col",
+                                                "size": "12",
+                                                "contains": [
+                                                    {
+                                                        "type": "button",
+                                                        "buttonText": "Submit"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

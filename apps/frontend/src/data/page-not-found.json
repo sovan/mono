@@ -1,0 +1,22 @@
+[
+    {
+        "type": "container",
+        "contains": [
+            {
+                "type": "row",
+                "contains": [
+                    {
+                        "type": "col",
+                        "contains": [
+                            {
+                                "type": "text",
+                                "text": "Page not found",
+                                "size": "12"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
