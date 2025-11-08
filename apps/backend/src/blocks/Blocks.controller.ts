@@ -21,7 +21,15 @@ export class BlocksController {
   async createBlock(@Body() createBlockDto: CreateBlockDto) {
     if (!createBlockDto.type) throw new HttpException('Type required', 404);
 
-    const allowedType = ['container', 'list', 'button', 'link', 'text', 'col'];
+    const allowedType = [
+      'container',
+      'list',
+      'button',
+      'link',
+      'text',
+      'col',
+      'row',
+    ];
     if (!allowedType.includes(createBlockDto.type))
       throw new HttpException('Allowed types: ' + allowedType, 404);
 
@@ -39,7 +47,7 @@ export class BlocksController {
           Number.parseInt(createBlockDto.size) < 1 ||
           Number.parseInt(createBlockDto.size) > 12
         )
-          throw new HttpException('Size should be within 1 to 12', 404);
+          throw new HttpException('Column size should be within 1 to 12', 404);
         dbObject.size = createBlockDto.size;
 
         if (!createBlockDto.contains)
@@ -49,6 +57,16 @@ export class BlocksController {
           throw new HttpException('Contains should be an array', 404);
         dbObject.contains = createBlockDto.contains;
 
+        break;
+      }
+
+      case 'row': {
+        if (!createBlockDto.contains)
+          throw new HttpException('Row contains required', 404);
+
+        if (!Array.isArray(createBlockDto.contains))
+          throw new HttpException('Contains should be an array', 404);
+        dbObject.contains = createBlockDto.contains;
         break;
       }
 
@@ -92,12 +110,13 @@ export class BlocksController {
           404
         );
     }
+
     try {
-      await this.BlockService.createBlock(dbObject);
+      const newBlock = await this.BlockService.createBlock(dbObject);
+      return newBlock;
     } catch (e) {
       return e;
     }
-    return true;
   }
 
   @Get()
@@ -126,6 +145,7 @@ export class BlocksController {
         }
         break;
       }
+
       case 'list': {
         returnData.listHeader = findBlock.listHeader;
         returnData.listHeader.push('Operation');
@@ -145,6 +165,7 @@ export class BlocksController {
         returnData.buttonText = findBlock.buttonText;
         break;
       }
+      case 'row':
       case 'container': {
         returnData.contains = [];
         for (const ID of findBlock.contains) {
