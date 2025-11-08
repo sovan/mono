@@ -1,11 +1,11 @@
-import axios from "axios";
-import { useState } from "react";
+import axios from 'axios';
+import { useState } from 'react';
 
 const useBackend = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
-  const [bundleId, setBundleId] = useState("");
-  const url = "http://localhost:3000/";
+  const [pageData, setPageData] = useState({});
+  const url = 'http://localhost:3000/blocks/';
 
   const createJSON = async (data: any) => {
     setIsLoading(true);
@@ -13,19 +13,33 @@ const useBackend = () => {
       .post(url, data)
       .then((res: any) => {
         if (res.status === 201) setSubmitSuccess(true);
-        setBundleId(res.data.id);
       })
       .catch(() => {
-        console.log("Error");
+        console.log('Error');
+      })
+      .finally(() => setIsLoading(false));
+  };
+
+  const fetchJSON = async (ID: any) => {
+    setIsLoading(true);
+    await axios
+      .get(url + ID)
+      .then((res: any) => {
+        if (res.status === 201) setSubmitSuccess(true);
+        setPageData(res.data);
+      })
+      .catch(() => {
+        console.log('Error');
       })
       .finally(() => setIsLoading(false));
   };
 
   return {
+    fetchJSON,
     createJSON,
     isLoading,
-    bundleId,
     submitSuccess,
+    pageData,
   };
 };
 export default useBackend;
