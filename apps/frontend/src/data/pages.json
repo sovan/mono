@@ -7,11 +7,11 @@
                 "contains": [
                     {
                         "type": "col",
+                        "size": "6",
                         "contains": [
                             {
                                 "type": "text",
-                                "text": "List all the created pages",
-                                "size": "10"
+                                "text": "List all the created pages"
                             }
                         ]
                     },
