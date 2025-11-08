@@ -33,6 +33,7 @@ export class BlocksController {
 
         if (!Array.isArray(createBlockDto.listHeader))
           throw new HttpException('All header should be an array', 404);
+        dbObject.listHeader = createBlockDto.listHeader;
 
         if (!createBlockDto.operations)
           throw new HttpException('Operation required', 404);
@@ -40,7 +41,7 @@ export class BlocksController {
         if (!Array.isArray(createBlockDto.operations))
           throw new HttpException('Operation required should be an array', 404);
 
-        dbObject.listHeader = createBlockDto.listHeader;
+        dbObject.operations = createBlockDto.operations;
         break;
       }
       case 'button': {
@@ -61,17 +62,47 @@ export class BlocksController {
   }
 
   @Get()
-  getBlocks() {
-    return this.BlockService.getBlocks();
+  async getBlocks() {
+    const dbRec = await this.BlockService.getBlocks();
+    return dbRec;
+  }
+
+  async getBlockRecurring(id: string) {
+    console.log(id + 'sovan');
+    const findBlock: any = await this.BlockService.getBlockByID(id);
+    if (!findBlock) throw new HttpException('Block not found', 404);
+    const returnData: any = { type: findBlock.type };
+    switch (findBlock.type) {
+      case 'list': {
+        returnData.listHeader = findBlock.listHeader;
+        returnData.operations = {};
+        returnData.operations.contains = [];
+        returnData.listRecord = [
+          ['Sovan', '25', 'Male'],
+          ['Luna', '31', 'Female'],
+        ];
+        for (const ID of findBlock.operations) {
+          const innerBlock = await this.getBlockRecurring(ID);
+          returnData.operations.contains.push(innerBlock);
+        }
+        break;
+      }
+      case 'button': {
+        returnData.buttonText = findBlock.buttonText;
+        break;
+      }
+      default:
+        throw new HttpException('Block not found', 404);
+    }
+    return returnData;
   }
 
   @Get(':id')
   async getBlockByID(@Param('id') id: string) {
     const isValid = mongoose.Types.ObjectId.isValid(id);
     if (!isValid) throw new HttpException('Block not found', 404);
-    const findBlock = await this.BlockService.getBlockByID(id);
-    if (!findBlock) throw new HttpException('Block not found', 404);
-    return findBlock;
+    const returnData = this.getBlockRecurring(id);
+    return returnData;
   }
 
   @Patch(':id')
