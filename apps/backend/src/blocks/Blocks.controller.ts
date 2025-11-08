@@ -39,9 +39,20 @@ export class BlocksController {
           throw new HttpException('Operation required', 404);
 
         if (!Array.isArray(createBlockDto.operations))
-          throw new HttpException('Operation required should be an array', 404);
+          throw new HttpException('Operation should be an array', 404);
 
         dbObject.operations = createBlockDto.operations;
+        break;
+      }
+
+      case 'container': {
+        if (!createBlockDto.contains)
+          throw new HttpException('Contains required', 404);
+
+        if (!Array.isArray(createBlockDto.contains))
+          throw new HttpException('Contains should be an array', 404);
+
+        dbObject.contains = createBlockDto.contains;
         break;
       }
       case 'button': {
@@ -51,7 +62,10 @@ export class BlocksController {
         break;
       }
       default:
-        throw new HttpException('Switch error', 404);
+        throw new HttpException(
+          'No switch defined for ' + createBlockDto.type,
+          404
+        );
     }
     try {
       await this.BlockService.createBlock(dbObject);
@@ -91,8 +105,16 @@ export class BlocksController {
         returnData.buttonText = findBlock.buttonText;
         break;
       }
+      case 'container': {
+        returnData.contains = [];
+        for (const ID of findBlock.contains) {
+          const innerBlock = await this.getBlockRecurring(ID);
+          returnData.contains.push(innerBlock);
+        }
+        break;
+      }
       default:
-        throw new HttpException('Block not found', 404);
+        throw new HttpException('No switch defined for ' + findBlock.type, 404);
     }
     return returnData;
   }

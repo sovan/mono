@@ -13,4 +13,7 @@ export class CreateBlockDto {
 
   @IsString()
   buttonText?: string;
+
+  @IsArray()
+  contains?: Array<string>;
 }
