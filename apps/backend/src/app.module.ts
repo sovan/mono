@@ -5,7 +5,7 @@ import { BlocksModule } from './blocks/Blocks.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost/sovan'),
+    MongooseModule.forRoot('mongodb://localhost/kkk'),
     UsersModule,
     BlocksModule,
   ],
