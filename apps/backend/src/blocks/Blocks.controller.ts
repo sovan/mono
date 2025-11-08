@@ -89,6 +89,7 @@ export class BlocksController {
     switch (findBlock.type) {
       case 'list': {
         returnData.listHeader = findBlock.listHeader;
+        returnData.listHeader.push('Operation');
         returnData.operations = {};
         returnData.operations.contains = [];
         returnData.listRecord = [
