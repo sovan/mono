@@ -21,12 +21,18 @@ export class BlocksController {
   async createBlock(@Body() createBlockDto: CreateBlockDto) {
     if (!createBlockDto.type) throw new HttpException('Type required', 404);
 
-    const allowedType = ['container', 'list', 'button', 'link'];
+    const allowedType = ['container', 'list', 'button', 'link', 'text'];
     if (!allowedType.includes(createBlockDto.type))
       throw new HttpException('Allowed types: ' + allowedType, 404);
 
     const dbObject: CreateBlockDto = { type: createBlockDto.type };
     switch (createBlockDto.type) {
+      case 'text': {
+        if (!createBlockDto.text) throw new HttpException('Text required', 404);
+        dbObject.text = createBlockDto.text;
+        break;
+      }
+
       case 'list': {
         if (!createBlockDto.listHeader)
           throw new HttpException('All header of list required', 404);
@@ -87,6 +93,10 @@ export class BlocksController {
     if (!findBlock) throw new HttpException('Block not found', 404);
     const returnData: any = { type: findBlock.type };
     switch (findBlock.type) {
+      case 'text': {
+        returnData.text = findBlock.text;
+        break;
+      }
       case 'list': {
         returnData.listHeader = findBlock.listHeader;
         returnData.listHeader.push('Operation');

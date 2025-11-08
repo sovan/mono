@@ -16,4 +16,7 @@ export class CreateBlockDto {
 
   @IsArray()
   contains?: Array<string>;
+
+  @IsString()
+  text?: string;
 }

@@ -16,6 +16,9 @@ export class Block {
 
   @Prop({ required: false })
   contains?: Array<string>;
+
+  @Prop({ required: false })
+  text?: string;
 }
 
 export const BlockShema = SchemaFactory.createForClass(Block);
