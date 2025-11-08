@@ -19,4 +19,7 @@ export class CreateBlockDto {
 
   @IsString()
   text?: string;
+
+  @IsString()
+  size?: string;
 }

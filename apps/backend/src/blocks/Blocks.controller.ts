@@ -21,7 +21,7 @@ export class BlocksController {
   async createBlock(@Body() createBlockDto: CreateBlockDto) {
     if (!createBlockDto.type) throw new HttpException('Type required', 404);
 
-    const allowedType = ['container', 'list', 'button', 'link', 'text'];
+    const allowedType = ['container', 'list', 'button', 'link', 'text', 'col'];
     if (!allowedType.includes(createBlockDto.type))
       throw new HttpException('Allowed types: ' + allowedType, 404);
 
@@ -30,6 +30,25 @@ export class BlocksController {
       case 'text': {
         if (!createBlockDto.text) throw new HttpException('Text required', 404);
         dbObject.text = createBlockDto.text;
+        break;
+      }
+
+      case 'col': {
+        if (!createBlockDto.size) throw new HttpException('Size required', 404);
+        if (
+          Number.parseInt(createBlockDto.size) < 1 ||
+          Number.parseInt(createBlockDto.size) > 12
+        )
+          throw new HttpException('Size should be within 1 to 12', 404);
+        dbObject.size = createBlockDto.size;
+
+        if (!createBlockDto.contains)
+          throw new HttpException('Contains required', 404);
+
+        if (!Array.isArray(createBlockDto.contains))
+          throw new HttpException('Contains should be an array', 404);
+        dbObject.contains = createBlockDto.contains;
+
         break;
       }
 
@@ -95,6 +114,16 @@ export class BlocksController {
     switch (findBlock.type) {
       case 'text': {
         returnData.text = findBlock.text;
+        break;
+      }
+
+      case 'col': {
+        returnData.size = findBlock.size;
+        returnData.contains = [];
+        for (const ID of findBlock.contains) {
+          const innerBlock = await this.getBlockRecurring(ID);
+          returnData.contains.push(innerBlock);
+        }
         break;
       }
       case 'list': {

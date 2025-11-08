@@ -19,6 +19,9 @@ export class Block {
 
   @Prop({ required: false })
   text?: string;
+
+  @Prop({ required: false })
+  size?: string;
 }
 
 export const BlockShema = SchemaFactory.createForClass(Block);
