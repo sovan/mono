@@ -1,11 +1,16 @@
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { IsArray, IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateBlockDto {
   @IsNotEmpty()
   @IsString()
-  name?: string;
+  type?: string;
+
+  @IsArray()
+  listHeader?: Array<string>;
+
+  @IsArray()
+  operations?: Array<string>;
 
   @IsString()
-  @IsOptional()
-  displayname?: string;
+  buttonText?: string;
 }

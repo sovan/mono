@@ -8,7 +8,6 @@ const Structure = () => {
     let page = params.pageName ? params.pageName : 'pages';
     page += params.operation ? '-' + params.operation : '';
     try {
-      console.log(`sovan ./data/${page}.json`);
       const res = require(`./data/${page}.json`);
       return res;
     } catch {
