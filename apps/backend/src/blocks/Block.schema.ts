@@ -1,4 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Validation, ValidationSchema } from './Validation.schema';
 
 @Schema()
 export class Block {
@@ -22,6 +23,18 @@ export class Block {
 
   @Prop({ required: false })
   size?: string;
+
+  @Prop({ required: false })
+  inputType?: string;
+
+  @Prop({ required: false })
+  name?: string;
+
+  @Prop({ required: false })
+  label?: string;
+
+  @Prop({ type: ValidationSchema })
+  validation?: Validation;
 }
 
 export const BlockShema = SchemaFactory.createForClass(Block);

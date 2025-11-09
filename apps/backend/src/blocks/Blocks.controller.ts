@@ -29,12 +29,42 @@ export class BlocksController {
       'text',
       'col',
       'row',
+      'input',
     ];
     if (!allowedType.includes(createBlockDto.type))
       throw new HttpException('Allowed types: ' + allowedType, 404);
 
     const dbObject: CreateBlockDto = { type: createBlockDto.type };
     switch (createBlockDto.type) {
+      case 'input': {
+        const allowedInputType = ['text', 'password', 'textarea'];
+        if (!createBlockDto.inputType)
+          throw new HttpException('Input Type required', 404);
+        if (!allowedInputType.includes(createBlockDto.inputType))
+          throw new HttpException(
+            'Allowed Input types: ' + allowedInputType,
+            404
+          );
+        dbObject.inputType = createBlockDto.inputType;
+
+        if (!createBlockDto.name)
+          throw new HttpException('Name of inputbox is required', 404);
+        dbObject.name = createBlockDto.name;
+
+        if (!createBlockDto.label)
+          throw new HttpException('Input Label is required', 404);
+        dbObject.label = createBlockDto.label;
+
+        if (
+          createBlockDto.validation &&
+          typeof createBlockDto.validation !== 'object'
+        )
+          throw new HttpException('Validation should be an object only', 404);
+        dbObject.validation = createBlockDto.validation;
+
+        break;
+      }
+
       case 'text': {
         if (!createBlockDto.text) throw new HttpException('Text required', 404);
         dbObject.text = createBlockDto.text;

@@ -1,4 +1,5 @@
-import { IsArray, IsNotEmpty, IsString } from 'class-validator';
+import { IsArray, IsNotEmpty, IsObject, IsString } from 'class-validator';
+import { Validation } from './Validation.schema';
 
 export class CreateBlockDto {
   @IsNotEmpty()
@@ -22,4 +23,16 @@ export class CreateBlockDto {
 
   @IsString()
   size?: string;
+
+  @IsString()
+  inputType?: string;
+
+  @IsString()
+  name?: string;
+
+  @IsString()
+  label?: string;
+
+  @IsObject()
+  validation?: Validation;
 }
