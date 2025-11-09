@@ -32,6 +32,7 @@ export class BlocksController {
       'input',
       'form',
       'select',
+      'accordion',
     ];
     if (!allowedType.includes(createBlockDto.type))
       throw new HttpException('Allowed types: ' + allowedType, 404);
@@ -109,9 +110,12 @@ export class BlocksController {
         break;
       }
 
-      case 'row': {
+      case 'accordion':
+      case 'row':
+      case 'form':
+      case 'container': {
         if (!createBlockDto.contains)
-          throw new HttpException('Row contains required', 404);
+          throw new HttpException('Contains required', 404);
 
         if (!Array.isArray(createBlockDto.contains))
           throw new HttpException('Contains should be an array', 404);
@@ -134,18 +138,6 @@ export class BlocksController {
           throw new HttpException('Operation should be an array', 404);
 
         dbObject.operations = createBlockDto.operations;
-        break;
-      }
-
-      case 'form':
-      case 'container': {
-        if (!createBlockDto.contains)
-          throw new HttpException('Contains required', 404);
-
-        if (!Array.isArray(createBlockDto.contains))
-          throw new HttpException('Contains should be an array', 404);
-
-        dbObject.contains = createBlockDto.contains;
         break;
       }
 
@@ -246,7 +238,8 @@ export class BlocksController {
       }
       case 'row':
       case 'form':
-      case 'container': {
+      case 'container':
+      case 'accordion': {
         returnData.contains = [];
         for (const ID of findBlock.contains) {
           const innerBlock = await this.getBlockRecurring(ID);
