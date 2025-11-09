@@ -153,6 +153,17 @@ export class BlocksController {
         if (!createBlockDto.buttonText)
           throw new HttpException('Button text required', 404);
         dbObject.buttonText = createBlockDto.buttonText;
+
+        const allowedButtonType = ['submit'];
+        if (
+          createBlockDto.buttonType &&
+          !allowedButtonType.includes(createBlockDto.buttonType)
+        )
+          throw new HttpException(
+            'Allowed button types: ' + allowedButtonType,
+            404
+          );
+        dbObject.buttonType = createBlockDto.buttonType;
         break;
       }
 
@@ -230,6 +241,7 @@ export class BlocksController {
       }
       case 'button': {
         returnData.buttonText = findBlock.buttonText;
+        returnData.buttonType = findBlock.buttonType;
         break;
       }
       case 'row':

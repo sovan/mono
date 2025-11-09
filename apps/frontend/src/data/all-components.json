@@ -66,10 +66,10 @@
                                                 "contains": [
                                                     {
                                                         "type": "select",
-                                                        "name": "dataselect",
+                                                        "name": "country",
                                                         "label": "Select data",
                                                         "validation": {
-                                                            "required": "Name required."
+                                                            "required": "Country required."
                                                         }
                                                     }
                                                 ]

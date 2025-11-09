@@ -16,6 +16,9 @@ export class Block {
   buttonText?: string;
 
   @Prop({ required: false })
+  buttonType?: string;
+
+  @Prop({ required: false })
   contains?: Array<string>;
 
   @Prop({ required: false })
