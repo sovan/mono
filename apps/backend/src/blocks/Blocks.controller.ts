@@ -31,12 +31,30 @@ export class BlocksController {
       'row',
       'input',
       'form',
+      'select',
     ];
     if (!allowedType.includes(createBlockDto.type))
       throw new HttpException('Allowed types: ' + allowedType, 404);
 
     const dbObject: CreateBlockDto = { type: createBlockDto.type };
     switch (createBlockDto.type) {
+      case 'select': {
+        if (!createBlockDto.name)
+          throw new HttpException('Select box name required', 404);
+        dbObject.name = createBlockDto.name;
+
+        if (!createBlockDto.label)
+          throw new HttpException('Select box label required', 404);
+        dbObject.label = createBlockDto.label;
+
+        if (
+          createBlockDto.validation &&
+          typeof createBlockDto.validation !== 'object'
+        )
+          throw new HttpException('Validation should be an object only', 404);
+        dbObject.validation = createBlockDto.validation;
+        break;
+      }
       case 'input': {
         const allowedInputType = ['text', 'password', 'textarea'];
         if (!createBlockDto.inputType)
@@ -130,12 +148,14 @@ export class BlocksController {
         dbObject.contains = createBlockDto.contains;
         break;
       }
+
       case 'button': {
         if (!createBlockDto.buttonText)
           throw new HttpException('Button text required', 404);
         dbObject.buttonText = createBlockDto.buttonText;
         break;
       }
+
       default:
         throw new HttpException(
           'No switch defined for ' + createBlockDto.type,
@@ -180,6 +200,13 @@ export class BlocksController {
 
       case 'input': {
         returnData.inputType = findBlock.inputType;
+        returnData.name = findBlock.name;
+        returnData.label = findBlock.label;
+        returnData.validation = findBlock.validation;
+        break;
+      }
+
+      case 'select': {
         returnData.name = findBlock.name;
         returnData.label = findBlock.label;
         returnData.validation = findBlock.validation;
