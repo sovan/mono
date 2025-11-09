@@ -30,6 +30,7 @@ export class BlocksController {
       'col',
       'row',
       'input',
+      'form',
     ];
     if (!allowedType.includes(createBlockDto.type))
       throw new HttpException('Allowed types: ' + allowedType, 404);
@@ -118,6 +119,7 @@ export class BlocksController {
         break;
       }
 
+      case 'form':
       case 'container': {
         if (!createBlockDto.contains)
           throw new HttpException('Contains required', 404);
@@ -204,6 +206,7 @@ export class BlocksController {
         break;
       }
       case 'row':
+      case 'form':
       case 'container': {
         returnData.contains = [];
         for (const ID of findBlock.contains) {
