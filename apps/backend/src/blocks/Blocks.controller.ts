@@ -159,7 +159,7 @@ export class BlocksController {
     console.log(id + 'sovan');
     const findBlock: any = await this.BlockService.getBlockByID(id);
     if (!findBlock) throw new HttpException('Block not found', 404);
-    const returnData: any = { type: findBlock.type };
+    const returnData: any = { _id: findBlock.id, type: findBlock.type };
     switch (findBlock.type) {
       case 'text': {
         returnData.text = findBlock.text;
@@ -173,6 +173,14 @@ export class BlocksController {
           const innerBlock = await this.getBlockRecurring(ID);
           returnData.contains.push(innerBlock);
         }
+        break;
+      }
+
+      case 'input': {
+        returnData.inputType = findBlock.inputType;
+        returnData.name = findBlock.name;
+        returnData.label = findBlock.label;
+        returnData.validation = findBlock.validation;
         break;
       }
 
