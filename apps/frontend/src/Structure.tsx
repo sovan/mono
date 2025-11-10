@@ -8,7 +8,7 @@ const Structure = () => {
   const { fetchJSON, pageData } = useBackend();
 
   useEffect(() => {
-    fetchJSON('690f1f12dcb7cd2e82ad8073');
+    fetchJSON('690feb07d91fe68159062245');
   }, []);
 
   return <Body data={[pageData]} params={params} />;
@@ -19,7 +19,7 @@ const Structure1 = () => {
 
   const fetchJSON = () => {
     try {
-      const res = require(`./data/pages.json`);
+      const res = require(`./data/all-components.json`);
       return res;
     } catch {
       const res = require(`./data/page-not-found.json`);
@@ -29,4 +29,4 @@ const Structure1 = () => {
 
   return <Body data={fetchJSON()} params={params} />;
 };
-export default Structure1;
+export default Structure;
