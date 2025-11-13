@@ -1,19 +1,22 @@
-import { useDraggable } from '@dnd-kit/core';
-
-const Draggable = (props: any) => {
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({
-    id: props.id,
-  });
-  const style = transform
-    ? {
-        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
-      }
-    : undefined;
-
+type DraggableProps = {
+  onMouseDown?: (event: React.MouseEvent<HTMLInputElement>) => void;
+  top?: number;
+  left?: number;
+};
+const Draggable = ({ onMouseDown, top = 0, left = 0 }: DraggableProps) => {
   return (
-    <button ref={setNodeRef} style={style} {...listeners} {...attributes}>
-      {props.children}
-    </button>
+    <div
+      onMouseDown={onMouseDown}
+      role="ss"
+      id="sovan"
+      style={{
+        border: '1px solid #000',
+        marginTop: top + 'px',
+        marginLeft: left + 'px',
+      }}
+    >
+      ss
+    </div>
   );
 };
 

@@ -1,26 +1,37 @@
-import { DndContext } from '@dnd-kit/core';
-
-import { Draggable, Droppable, ResizableBox } from './components/Widgets';
-
 import { useState } from 'react';
+import { Draggable } from './components/Widgets';
 
 const WebFlowDesign = () => {
-  const [parent, setParent] = useState<string[]>([]);
-  return (
-    <DndContext onDragEnd={handleDragEnd}>
-      <Draggable id="draggable">Drag me</Draggable>
+  const [top, setTop] = useState<number>(0);
+  const [left, setLeft] = useState<number>(0);
 
-      <Droppable key={'droppable'} id={'droppable'}>
-        {parent.map((id) => {
-          return <ResizableBox key={id} />;
-        })}
-      </Droppable>
-    </DndContext>
+  const [selectedElement, setSelectedElement] = useState<string | undefined>(
+    undefined
   );
+  const handleMouseMove = (event: React.MouseEvent<HTMLInputElement>) => {
+    if (selectedElement) {
+      setTop(event.clientY - 60);
+      setLeft(event.clientX);
+    }
+  };
 
-  function handleDragEnd(event: { over: any }) {
-    const { over } = event;
-    setParent([...parent, ...[over.id]]);
-  }
+  const handleMouseDown = (event: React.MouseEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    setSelectedElement(event.currentTarget.id);
+  };
+
+  const handleMouseUp = (event: React.MouseEvent<HTMLInputElement>) => {
+    setSelectedElement(undefined);
+  };
+
+  return (
+    <div
+      style={{ width: '80%', border: '1px solid #f00', height: '500px' }}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
+    >
+      <Draggable onMouseDown={handleMouseDown} top={top} left={left} />
+    </div>
+  );
 };
 export default WebFlowDesign;
