@@ -16,6 +16,7 @@
     "bootstrap": "^5.3.8",
     "class-validator": "^0.14.2",
     "mongoose": "^8.19.3",
+    "re-resizable": "^6.11.2",
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.10",
     "react-dom": "^19.0.0",

@@ -1,28 +1,26 @@
 import { DndContext } from '@dnd-kit/core';
 
-import Draggable from './Draggable';
-import Droppable from './Droppable';
+import { Draggable, Droppable, ResizableBox } from './components/Widgets';
+
 import { useState } from 'react';
 
 const WebFlowDesign = () => {
-  const containers = ['A'];
-  const [parent, setParent] = useState(null);
-  const draggableMarkup = <Draggable id="draggable">Drag me</Draggable>;
-
+  const [parent, setParent] = useState<string[]>([]);
   return (
     <DndContext onDragEnd={handleDragEnd}>
-      {parent === null ? draggableMarkup : null}
-      {containers.map((id) => (
-        <Droppable key={id} id={id}>
-          {parent === id ? draggableMarkup : 'Drop here'}
-        </Droppable>
-      ))}
+      <Draggable id="draggable">Drag me</Draggable>
+
+      <Droppable key={'droppable'} id={'droppable'}>
+        {parent.map((id) => {
+          return <ResizableBox key={id} />;
+        })}
+      </Droppable>
     </DndContext>
   );
 
   function handleDragEnd(event: { over: any }) {
     const { over } = event;
-    setParent(over ? over.id : null);
+    setParent([...parent, ...[over.id]]);
   }
 };
 export default WebFlowDesign;
