@@ -30,8 +30,20 @@ const WebFlowDesign = () => {
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
     >
-      <Draggable onMouseDown={handleMouseDown} top={top} left={left} />
+      <Draggable
+        onMouseDown={handleMouseDown}
+        top={top}
+        left={left}
+        id="sovan1"
+      />
+      <Draggable
+        onMouseDown={handleMouseDown}
+        top={top}
+        left={left}
+        id="sovan2"
+      />
     </div>
   );
 };
 export default WebFlowDesign;
+// /FaArrowsAlt
