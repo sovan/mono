@@ -1,8 +1,8 @@
-import { Form } from "react-bootstrap";
-import { useForm } from "react-hook-form";
-import Body from "./Body";
-import { useState } from "react";
-import useBackend from "../../hooks/useBackend";
+import { Form } from 'react-bootstrap';
+import { useForm } from 'react-hook-form';
+import Body from './Body';
+import { useState } from 'react';
+import useBackend from '../../hooks/useBackend';
 
 const Forms = (props: any) => {
   const [val, setVal] = useState<any>();
@@ -12,30 +12,30 @@ const Forms = (props: any) => {
     formState: { errors, touchedFields },
   } = useForm({
     shouldFocusError: true,
-    mode: "onTouched",
+    mode: 'onTouched',
   });
   const { createJSON } = useBackend();
   const onSubmit = async (data: any) => {
     setVal(JSON.stringify(data));
     console.log(JSON.stringify(props.data.act));
-    if (props.data.act === "create-json") {
+    if (props.data.act === 'create-json') {
       createJSON(data);
     }
   };
 
   return (
-    <>
-      --- Submit : {val} ---
-      <fieldset className="mt-4">
-        <legend>Contact Details</legend>
-        <Form onSubmit={handleSubmit(onSubmit)}>
-          <Body
-            data={props.data.contains}
-            dataExchange={{ touchedFields, errors, register }}
-          />
-        </Form>
-      </fieldset>
-    </>
+    <Form
+      onSubmit={handleSubmit(onSubmit)}
+      onMouseUp={props.onMouseUp}
+      style={{ minHeight: '30px', border: '1px solid #00f' }}
+      id={props.data.id}
+    >
+      <Body
+        data={props.data.contains}
+        dataExchange={{ touchedFields, errors, register }}
+        onMouseUp={props.onMouseUp}
+      />
+    </Form>
   );
 };
 export default Forms;

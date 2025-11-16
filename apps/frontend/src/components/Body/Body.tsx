@@ -1,44 +1,48 @@
-import Contains from "./Contains";
-import Rows from "./Rows";
-import Cols from "./Cols";
-import Text from "./Text";
-import Buttons from "./Buttons";
-import List from "./List";
-import Links from "./Links";
-import Accordions from "./Accordions";
-import Forms from "./Forms";
-import Inputs from "./Inputs";
-import Selects from "./Selects";
-import Checks from "./Checks";
-import Ticks from "./Ticks";
+import Contains from './Contains';
+import Rows from './Rows';
+import Cols from './Cols';
+import Text from './Text';
+import Buttons from './Buttons';
+import List from './List';
+import Links from './Links';
+import Accordions from './Accordions';
+import Forms from './Forms';
+import Inputs from './Inputs';
+import Selects from './Selects';
+import Checks from './Checks';
+import Ticks from './Ticks';
+
 const Body = (props: any) => {
   return props.data.map((data: any) => {
     switch (data.type) {
-      case "container":
+      case 'container':
         return (
           <Contains
+            onMouseUp={props.onMouseUp}
             data={data}
             dataExchange={props.dataExchange}
             params={props.params}
           />
         );
-      case "row":
+      case 'row':
         return (
           <Rows
             data={data}
             dataExchange={props.dataExchange}
             params={props.params}
+            onMouseUp={props.onMouseUp}
           />
         );
-      case "col":
+      case 'col':
         return (
           <Cols
             data={data}
             dataExchange={props.dataExchange}
             params={props.params}
+            onMouseUp={props.onMouseUp}
           />
         );
-      case "text":
+      case 'text':
         return (
           <Text
             data={data}
@@ -46,7 +50,7 @@ const Body = (props: any) => {
             params={props.params}
           />
         );
-      case "button":
+      case 'button':
         return (
           <Buttons
             data={data}
@@ -54,7 +58,7 @@ const Body = (props: any) => {
             params={props.params}
           />
         );
-      case "link":
+      case 'link':
         return (
           <Links
             data={data}
@@ -62,7 +66,7 @@ const Body = (props: any) => {
             params={props.params}
           />
         );
-      case "list":
+      case 'list':
         return (
           <List
             data={data}
@@ -70,23 +74,25 @@ const Body = (props: any) => {
             params={props.params}
           />
         );
-      case "accordion":
+      case 'accordion':
         return (
           <Accordions
             data={data}
             dataExchange={props.dataExchange}
             params={props.params}
+            onMouseUp={props.onMouseUp}
           />
         );
-      case "form":
+      case 'form':
         return (
           <Forms
             data={data}
             dataExchange={props.dataExchange}
             params={props.params}
+            onMouseUp={props.onMouseUp}
           />
         );
-      case "input":
+      case 'input':
         return (
           <Inputs
             data={data}
@@ -94,7 +100,7 @@ const Body = (props: any) => {
             params={props.params}
           />
         );
-      case "select":
+      case 'select':
         return (
           <Selects
             data={data}
@@ -102,8 +108,8 @@ const Body = (props: any) => {
             params={props.params}
           />
         );
-      case "check":
-      case "radio":
+      case 'check':
+      case 'radio':
         return (
           <Checks
             data={data}
@@ -111,7 +117,7 @@ const Body = (props: any) => {
             params={props.params}
           />
         );
-      case "tick":
+      case 'tick':
         return (
           <Ticks
             data={data}

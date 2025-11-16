@@ -3,20 +3,29 @@ import {
   faArrowsUpDownLeftRight,
   faArrowsLeftRight,
 } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
 
 type DraggableProps = {
   onMouseDown?: (event: React.MouseEvent<HTMLInputElement>) => void;
-  top?: number;
-  left?: number;
+  topM?: number;
+  leftM?: number;
   id: string;
+  handleMouseUp: string | undefined;
 };
-const Draggable = ({ onMouseDown, top = 0, left = 0, id }: DraggableProps) => {
+
+const Draggable = ({
+  onMouseDown,
+  topM = 0,
+  leftM = 0,
+  id,
+  handleMouseUp,
+}: DraggableProps) => {
   return (
     <div
       style={{
         border: '1px solid #000',
-        marginTop: top + 'px',
-        marginLeft: left + 'px',
+        marginTop: topM + 'px',
+        marginLeft: leftM + 'px',
       }}
     >
       <div
