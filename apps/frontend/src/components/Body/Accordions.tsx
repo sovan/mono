@@ -5,7 +5,7 @@ const Accordions = (props: any) => {
   return (
     <Accordion
       defaultActiveKey="0"
-      id={props.data.id}
+      id={props.data._id}
       onMouseUp={props.onMouseUp}
       style={{ minHeight: '20px', border: '2px solid #f00' }}
     >
@@ -13,7 +13,7 @@ const Accordions = (props: any) => {
         return (
           <Accordion.Item
             eventKey={index.toString()}
-            key={props.data.id + index}
+            key={props.data._id + index}
           >
             <Accordion.Header>{index} </Accordion.Header>
             <Accordion.Body>

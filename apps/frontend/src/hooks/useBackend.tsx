@@ -21,6 +21,9 @@ const useBackend = () => {
         };
         break;
     }
+
+    console.log(droppedElement, droppedPlace);
+
     await axios
       .post(url, json)
       .then((res: any) => {

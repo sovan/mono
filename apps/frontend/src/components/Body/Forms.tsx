@@ -28,7 +28,7 @@ const Forms = (props: any) => {
       onSubmit={handleSubmit(onSubmit)}
       onMouseUp={props.onMouseUp}
       style={{ minHeight: '30px', border: '1px solid #00f' }}
-      id={props.data.id}
+      id={props.data._id}
     >
       <Body
         data={props.data.contains}

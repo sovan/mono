@@ -6,7 +6,7 @@ const Contains = (props: any) => {
     <Container
       onMouseUp={props.onMouseUp}
       style={{ minHeight: '40px', border: '1px solid #000' }}
-      id={props.data.id}
+      id={props.data._id}
     >
       <Body
         data={props.data.contains}

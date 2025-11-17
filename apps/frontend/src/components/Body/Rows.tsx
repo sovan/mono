@@ -6,7 +6,7 @@ const Rows = (props: any) => {
     <Row
       style={{ minHeight: '30px', border: '1px solid #f00' }}
       onMouseUp={props.onMouseUp}
-      id={props.data.id}
+      id={props.data._id}
     >
       <Body
         data={props.data.contains}

@@ -7,7 +7,7 @@ const Cols = (props: any) => {
       xs={props.data.size}
       style={{ minHeight: '20px', border: '1px solid #0f0' }}
       onMouseUp={props.onMouseUp}
-      id={props.data.id}
+      id={props.data._id}
     >
       <Body
         data={props.data.contains}
