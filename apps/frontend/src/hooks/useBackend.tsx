@@ -7,10 +7,22 @@ const useBackend = () => {
   const [pageData, setPageData] = useState({});
   const url = 'http://localhost:3000/blocks/';
 
-  const createJSON = async (data: any) => {
+  const createJSON = async (
+    droppedElement: string | undefined,
+    droppedPlace: string
+  ) => {
     setIsLoading(true);
+    let json = {};
+    switch (droppedElement) {
+      case 'Container':
+        json = {
+          type: 'container',
+          contains: [],
+        };
+        break;
+    }
     await axios
-      .post(url, data)
+      .post(url, json)
       .then((res: any) => {
         if (res.status === 201) setSubmitSuccess(true);
       })

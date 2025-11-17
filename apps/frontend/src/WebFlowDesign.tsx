@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import Body from './components/Body/Body';
+import useBackend from './hooks/useBackend';
 
 const WebFlowDesign = () => {
   const widget = [
@@ -19,65 +20,11 @@ const WebFlowDesign = () => {
     'Accordians',
     'List',
   ];
+  const { fetchJSON, createJSON, pageData } = useBackend();
+
   const [selectedElement, setSelectedElement] = useState<string | undefined>(
     undefined
   );
-  const [pageJSON, setPageJSON] = useState<Array<any>>([
-    {
-      type: 'container',
-      id: 'container-1',
-      contains: [
-        {
-          type: 'row',
-          id: 'row-1',
-          contains: [
-            {
-              type: 'col',
-              size: '6',
-              id: 'col-1',
-              contains: [
-                {
-                  type: 'text',
-                  text: 'List pages',
-                  id: 'text-1',
-                },
-              ],
-            },
-            {
-              type: 'col',
-              size: '6',
-              id: 'col-2',
-              contains: [
-                {
-                  type: 'form',
-                  id: 'form-1',
-                  contains: [],
-                },
-              ],
-            },
-            {
-              type: 'col',
-              size: '6',
-              id: 'col-3',
-              contains: [
-                {
-                  type: 'accordion',
-                  id: 'accordion-1',
-                  contains: [],
-                },
-              ],
-            },
-            {
-              type: 'col',
-              size: '12',
-              id: 'col-4',
-              contains: [],
-            },
-          ],
-        },
-      ],
-    },
-  ]);
 
   const handleMouseMove = (event: React.MouseEvent<HTMLInputElement>) => {
     if (selectedElement) {
@@ -90,20 +37,13 @@ const WebFlowDesign = () => {
     setSelectedElement(event.currentTarget.id);
   };
 
+  useEffect(() => {
+    fetchJSON('691a720e879c97834f5b3375');
+  }, []);
+
   const handleMouseUp = (event: React.MouseEvent<HTMLInputElement>) => {
     console.log(selectedElement + ' dropped in ' + event.currentTarget.id);
-    if (event.currentTarget.id === 'Page') {
-      switch (selectedElement) {
-        case 'Container':
-          break;
-        case 'Row':
-          break;
-        case 'Column':
-          break;
-        default:
-          console.log('Switch is not yet created');
-      }
-    }
+    createJSON(selectedElement, event.currentTarget.id);
     setSelectedElement(undefined);
   };
 
@@ -124,7 +64,7 @@ const WebFlowDesign = () => {
         onMouseDown={handleMouseDown}
         id="Page"
       >
-        <Body data={pageJSON} onMouseUp={handleMouseUp} />
+        <Body data={[pageData]} onMouseUp={handleMouseUp} />
       </Col>
     </Row>
   );
