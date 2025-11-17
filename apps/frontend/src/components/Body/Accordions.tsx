@@ -11,13 +11,17 @@ const Accordions = (props: any) => {
     >
       {props.data.contains.map((data: any, index: any) => {
         return (
-          <Accordion.Item eventKey={index.toString()} key={'ss' + index}>
+          <Accordion.Item
+            eventKey={index.toString()}
+            key={props.data.id + index}
+          >
             <Accordion.Header>{index} </Accordion.Header>
             <Accordion.Body>
               <Body
                 data={[data]}
                 dataExchange={props.dataExchange}
                 params={props.params}
+                onMouseUp={props.onMouseUp}
               />
             </Accordion.Body>
           </Accordion.Item>

@@ -17,6 +17,7 @@ const WebFlowDesign = () => {
     'Check Box',
     'Radio',
     'Accordians',
+    'List',
   ];
   const [selectedElement, setSelectedElement] = useState<string | undefined>(
     undefined
@@ -66,6 +67,12 @@ const WebFlowDesign = () => {
                 },
               ],
             },
+            {
+              type: 'col',
+              size: '12',
+              id: 'col-4',
+              contains: [],
+            },
           ],
         },
       ],
@@ -74,71 +81,24 @@ const WebFlowDesign = () => {
 
   const handleMouseMove = (event: React.MouseEvent<HTMLInputElement>) => {
     if (selectedElement) {
-      console.log('ss');
+      console.log(selectedElement);
     }
   };
 
   const handleMouseDown = (event: React.MouseEvent<HTMLInputElement>) => {
     event.preventDefault();
     setSelectedElement(event.currentTarget.id);
-    console.log('down' + event.currentTarget.id);
   };
 
   const handleMouseUp = (event: React.MouseEvent<HTMLInputElement>) => {
     console.log(selectedElement + ' dropped in ' + event.currentTarget.id);
-    if (event.currentTarget.id === 'page') {
+    if (event.currentTarget.id === 'Page') {
       switch (selectedElement) {
         case 'Container':
-          setPageJSON([
-            {
-              type: 'container',
-              id: 'container-1',
-              contains: [],
-            },
-          ]);
           break;
         case 'Row':
-          setPageJSON([
-            {
-              type: 'container',
-              id: 'container-1',
-              contains: [
-                {
-                  type: 'row',
-                  id: 'row-1',
-                  contains: [],
-                },
-              ],
-            },
-          ]);
           break;
         case 'Column':
-          setPageJSON([
-            {
-              type: 'container',
-              id: 'container-1',
-              contains: [
-                {
-                  id: 'row-1',
-                  type: 'row',
-                  contains: [
-                    {
-                      type: 'col',
-                      size: '6',
-                      contains: [],
-                      id: 'col-1',
-                    },
-                    {
-                      type: 'col',
-                      size: '6',
-                      contains: [],
-                      id: 'col-2',
-                    },
-                  ],
-                },
-              ],
-            },
-          ]);
           break;
         default:
           console.log('Switch is not yet created');
@@ -162,7 +122,7 @@ const WebFlowDesign = () => {
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseDown={handleMouseDown}
-        id="page"
+        id="Page"
       >
         <Body data={pageJSON} onMouseUp={handleMouseUp} />
       </Col>
