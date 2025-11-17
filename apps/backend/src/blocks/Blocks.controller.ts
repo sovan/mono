@@ -261,7 +261,7 @@ export class BlocksController {
     return returnData;
   }
 
-  @Patch(':id')
+  @Post(':id')
   async updateBlock(
     @Param('id') id: string,
     @Body() updateBlockDto: UpdateBlockDto

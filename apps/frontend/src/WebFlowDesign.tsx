@@ -28,22 +28,27 @@ const WebFlowDesign = () => {
 
   const handleMouseMove = (event: React.MouseEvent<HTMLInputElement>) => {
     if (selectedElement) {
-      console.log(selectedElement);
+      //console.log(selectedElement);
     }
   };
-
+  let droppedID = '';
   const handleMouseDown = (event: React.MouseEvent<HTMLInputElement>) => {
     event.preventDefault();
     setSelectedElement(event.currentTarget.id);
   };
 
   useEffect(() => {
-    fetchJSON('691a720e879c97834f5b3375');
+    fetchJSON('691b21ed8c559d22d4aeaf5c');
   }, []);
 
   const handleMouseUp = (event: React.MouseEvent<HTMLInputElement>) => {
-    console.log(selectedElement + ' dropped in ' + event.currentTarget.id);
-    createJSON(selectedElement, event.currentTarget.id);
+    if (!droppedID) {
+      droppedID = event.currentTarget.id;
+      createJSON(selectedElement, event.currentTarget.id);
+      setTimeout(() => {
+        droppedID = '';
+      }, 100);
+    }
     setSelectedElement(undefined);
   };
 

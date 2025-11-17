@@ -22,12 +22,31 @@ const useBackend = () => {
         break;
     }
 
-    console.log(droppedElement, droppedPlace);
-
     await axios
       .post(url, json)
-      .then((res: any) => {
-        if (res.status === 201) setSubmitSuccess(true);
+      .then(async (res: any) => {
+        if (res.status === 201) {
+          const newID = res.data._id;
+          setSubmitSuccess(true);
+          await axios
+            .get(url + droppedPlace)
+            .then(async (res: any) => {
+              const updateData = res.data;
+              delete updateData['_id'];
+              updateData['contains'].push(newID);
+              await axios
+                .post(url + droppedPlace, updateData)
+                .then(async (res: any) => {
+                  if (res.status === 201) setSubmitSuccess(true);
+                })
+                .catch(() => {
+                  console.log('Error');
+                });
+            })
+            .catch(() => {
+              console.log('Error');
+            });
+        }
       })
       .catch(() => {
         console.log('Error');
