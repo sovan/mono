@@ -6,6 +6,10 @@ const PropertyBox = (props: any) => {
       const res = require(`../../data/property/col.json`);
       return <Body data={res} formValue={props.formValue} />;
     }
+    case 'text': {
+      const res = require(`../../data/property/text.json`);
+      return <Body data={res} formValue={props.formValue} />;
+    }
     default:
       return 'Property for ' + props.data.type + ' is not created.';
   }

@@ -49,6 +49,7 @@ const Body = (props: any) => {
             data={data}
             dataExchange={props.dataExchange}
             params={props.params}
+            onMouseUp={props.onMouseUp}
           />
         );
       case 'button':

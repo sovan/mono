@@ -35,6 +35,12 @@ const useBackend = () => {
           contains: [],
         };
         break;
+      case 'Text':
+        json = {
+          type: 'text',
+          text: 'Please enter something',
+        };
+        break;
     }
 
     await axios
@@ -95,6 +101,12 @@ const useBackend = () => {
           type: oldValue.type,
           size: newValue.size,
           contains: oldValue.contains,
+        };
+        break;
+      case 'text':
+        json = {
+          type: oldValue.type,
+          text: newValue.text,
         };
         break;
     }

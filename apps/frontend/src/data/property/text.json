@@ -1,0 +1,26 @@
+[
+    {
+        "type": "container",
+        "contains": [
+            {
+                "type": "form",
+                "contains": [
+                    {
+                        "type": "input",
+                        "inputType": "text",
+                        "name": "text",
+                        "label": "Text contain",
+                        "validation": {
+                            "required": "Text required."
+                        }
+                    },
+                    {
+                        "type": "button",
+                        "buttonType": "submit",
+                        "buttonText": "Submit"
+                    }
+                ]
+            }
+        ]
+    }
+]
