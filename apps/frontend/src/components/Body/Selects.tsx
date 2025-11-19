@@ -1,4 +1,4 @@
-import { Form } from "react-bootstrap";
+import { Form } from 'react-bootstrap';
 
 const Selects = (props: any) => {
   return (
@@ -16,10 +16,10 @@ const Selects = (props: any) => {
           props.data.validation
         )}
       >
-        <option value="">Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+        {props.data.values !== undefined &&
+          props.data.values.map((eachOption: any) => {
+            return <option value={eachOption.value}>{eachOption.label}</option>;
+          })}
       </Form.Select>
       <Form.Control.Feedback type="invalid">
         <>{props.dataExchange.errors?.[props.data.name]?.message}</>

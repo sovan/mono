@@ -1,6 +1,9 @@
-import { Form } from "react-bootstrap";
+import { Form } from 'react-bootstrap';
 
 const Inputs = (props: any) => {
+  if (props.data.visibility && props.data.visibility === 'hidden') {
+    return;
+  }
   return (
     <Form.Group>
       <Form.Label>{props.data.label}</Form.Label>
@@ -10,8 +13,8 @@ const Inputs = (props: any) => {
           props.dataExchange.touchedFields?.[props.data.name] &&
           !props.dataExchange.errors?.[props.data.name]
         }
-        as={props.data.inputType === "textarea" ? "textarea" : undefined}
-        type={props.data.inputType === "password" ? "password" : "text"}
+        as={props.data.inputType === 'textarea' ? 'textarea' : undefined}
+        type={props.data.inputType === 'password' ? 'password' : 'text'}
         placeholder={props.data.label}
         {...props.dataExchange.register(
           [props.data.name],

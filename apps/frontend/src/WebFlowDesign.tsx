@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import Body from './components/Body/Body';
 import useBackend from './hooks/useBackend';
+import Modals from './components/Others/Modals';
 
 const WebFlowDesign = () => {
   const widget = [
@@ -20,31 +21,35 @@ const WebFlowDesign = () => {
     'Accordians',
     'List',
   ];
-  const { fetchJSON, createJSON, pageData } = useBackend();
-
+  const { fetchJSON, createJSON, pageData, isCreated } = useBackend();
   const [selectedElement, setSelectedElement] = useState<string | undefined>(
     undefined
   );
-
-  const handleMouseMove = (event: React.MouseEvent<HTMLInputElement>) => {
-    if (selectedElement) {
-      //console.log(selectedElement);
-    }
-  };
+  const [openModal, setOpenModal] = useState<boolean>(true);
   let droppedID = '';
+
   const handleMouseDown = (event: React.MouseEvent<HTMLInputElement>) => {
     event.preventDefault();
     setSelectedElement(event.currentTarget.id);
   };
 
   useEffect(() => {
-    fetchJSON('691b21ed8c559d22d4aeaf5c');
-  }, []);
+    if (isCreated) {
+      fetchJSON('691b21ed8c559d22d4aeaf5c');
+    }
+  }, [isCreated]);
 
   const handleMouseUp = (event: React.MouseEvent<HTMLInputElement>) => {
     if (!droppedID) {
       droppedID = event.currentTarget.id;
-      createJSON(selectedElement, event.currentTarget.id);
+      switch (selectedElement) {
+        case 'Column':
+          setOpenModal(true);
+          break;
+        default:
+          createJSON(selectedElement, event.currentTarget.id);
+      }
+
       setTimeout(() => {
         droppedID = '';
       }, 100);
@@ -64,15 +69,14 @@ const WebFlowDesign = () => {
       <Col
         xs="8"
         style={{ border: '1px solid #f00' }}
-        onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseDown={handleMouseDown}
         id="Page"
       >
         <Body data={[pageData]} onMouseUp={handleMouseUp} />
       </Col>
+      <Modals show={openModal} />
     </Row>
   );
 };
 export default WebFlowDesign;
-// /FaArrowsAlt

@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 const useBackend = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [isCreated, setIsCreated] = useState(true);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [pageData, setPageData] = useState({});
   const url = 'http://localhost:3000/blocks/';
@@ -11,12 +12,24 @@ const useBackend = () => {
     droppedElement: string | undefined,
     droppedPlace: string
   ) => {
-    setIsLoading(true);
+    setIsCreated(false);
     let json = {};
     switch (droppedElement) {
       case 'Container':
         json = {
           type: 'container',
+          contains: [],
+        };
+        break;
+      case 'Row':
+        json = {
+          type: 'row',
+          contains: [],
+        };
+        break;
+      case 'Column':
+        json = {
+          type: 'col',
           contains: [],
         };
         break;
@@ -41,7 +54,8 @@ const useBackend = () => {
                 })
                 .catch(() => {
                   console.log('Error');
-                });
+                })
+                .finally(() => setIsCreated(true));
             })
             .catch(() => {
               console.log('Error');
@@ -50,8 +64,7 @@ const useBackend = () => {
       })
       .catch(() => {
         console.log('Error');
-      })
-      .finally(() => setIsLoading(false));
+      });
   };
 
   const fetchJSON = async (ID: any) => {
@@ -74,6 +87,7 @@ const useBackend = () => {
     isLoading,
     submitSuccess,
     pageData,
+    isCreated,
   };
 };
 export default useBackend;
