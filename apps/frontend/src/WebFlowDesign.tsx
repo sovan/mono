@@ -21,8 +21,14 @@ const WebFlowDesign = () => {
     'Accordians',
     'List',
   ];
-  const { fetchJSON, createJSON, pageData, isCreated, propertyData } =
-    useBackend();
+  const {
+    fetchJSON,
+    createJSON,
+    pageData,
+    isCreated,
+    propertyData,
+    updateJSON,
+  } = useBackend();
   const [selectedElement, setSelectedElement] = useState<string | undefined>(
     undefined
   );
@@ -64,7 +70,7 @@ const WebFlowDesign = () => {
   };
 
   const handleForm = (formValue: any) => {
-    console.log(formValue);
+    updateJSON(formValue, propertyData);
   };
 
   return (

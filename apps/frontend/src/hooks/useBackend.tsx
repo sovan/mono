@@ -87,6 +87,29 @@ const useBackend = () => {
       .finally(() => setIsLoading(false));
   };
 
+  const updateJSON = async (newValue: any, oldValue: any) => {
+    let json = {};
+    switch (oldValue.type) {
+      case 'col':
+        json = {
+          type: oldValue.type,
+          size: newValue.size,
+          contains: oldValue.contains,
+        };
+        break;
+    }
+    setIsCreated(false);
+    await axios
+      .post(url + oldValue._id, json)
+      .then(async (res: any) => {
+        if (res.status === 201) setSubmitSuccess(true);
+      })
+      .catch(() => {
+        console.log('Error');
+      })
+      .finally(() => setIsCreated(true));
+  };
+
   return {
     fetchJSON,
     createJSON,
@@ -95,6 +118,7 @@ const useBackend = () => {
     pageData,
     isCreated,
     propertyData,
+    updateJSON,
   };
 };
 export default useBackend;
