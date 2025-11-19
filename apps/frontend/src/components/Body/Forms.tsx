@@ -1,10 +1,8 @@
 import { Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import Body from './Body';
-import { useState } from 'react';
 
 const Forms = (props: any) => {
-  const [val, setVal] = useState<any>();
   const {
     register,
     handleSubmit,
@@ -14,8 +12,7 @@ const Forms = (props: any) => {
     mode: 'onTouched',
   });
   const onSubmit = async (data: any) => {
-    setVal(JSON.stringify(data));
-    console.log(data);
+    props.formValue(data);
   };
 
   return (

@@ -22,6 +22,7 @@ const Body = (props: any) => {
             data={data}
             dataExchange={props.dataExchange}
             params={props.params}
+            formValue={props.formValue}
           />
         );
       case 'row':
@@ -90,6 +91,7 @@ const Body = (props: any) => {
             dataExchange={props.dataExchange}
             params={props.params}
             onMouseUp={props.onMouseUp}
+            formValue={props.formValue}
           />
         );
       case 'input':

@@ -6,6 +6,7 @@ const useBackend = () => {
   const [isCreated, setIsCreated] = useState(true);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [pageData, setPageData] = useState({});
+  const [propertyData, setPropertyData] = useState({});
   const url = 'http://localhost:3000/blocks/';
 
   const createJSON = async (
@@ -68,13 +69,17 @@ const useBackend = () => {
       });
   };
 
-  const fetchJSON = async (ID: any) => {
+  const fetchJSON = async (ID: any, type?: string) => {
     setIsLoading(true);
     await axios
       .get(url + ID)
       .then((res: any) => {
         if (res.status === 201) setSubmitSuccess(true);
-        setPageData(res.data);
+        if (type === 'property') {
+          setPropertyData(res.data);
+        } else {
+          setPageData(res.data);
+        }
       })
       .catch(() => {
         console.log('Error');
@@ -89,6 +94,7 @@ const useBackend = () => {
     submitSuccess,
     pageData,
     isCreated,
+    propertyData,
   };
 };
 export default useBackend;

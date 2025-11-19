@@ -13,6 +13,7 @@ const Contains = (props: any) => {
         dataExchange={props.dataExchange}
         params={props.params}
         onMouseUp={props.onMouseUp}
+        formValue={props.formValue}
       />
     </Container>
   );

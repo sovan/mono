@@ -14,7 +14,7 @@ const Inputs = (props: any) => {
           !props.dataExchange.errors?.[props.data.name]
         }
         as={props.data.inputType === 'textarea' ? 'textarea' : undefined}
-        type={props.data.inputType === 'password' ? 'password' : 'text'}
+        type={props.data.inputType}
         placeholder={props.data.label}
         {...props.dataExchange.register(
           [props.data.name],
