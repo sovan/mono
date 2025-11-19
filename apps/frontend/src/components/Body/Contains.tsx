@@ -5,7 +5,7 @@ const Contains = (props: any) => {
   return (
     <Container
       onMouseUp={props.onMouseUp}
-      style={{ minHeight: '40px', border: '1px solid #000' }}
+      style={{ minHeight: '40px', border: '2px solid #000', padding: '2px' }}
       id={props.data._id}
     >
       <Body

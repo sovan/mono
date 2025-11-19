@@ -4,7 +4,12 @@ import Body from './Body';
 const Rows = (props: any) => {
   return (
     <Row
-      style={{ minHeight: '30px', border: '1px solid #f00' }}
+      style={{
+        minHeight: '40px',
+        border: '2px solid #f00',
+        margin: '2px',
+        padding: '3px',
+      }}
       onMouseUp={props.onMouseUp}
       id={props.data._id}
     >
