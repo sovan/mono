@@ -30,6 +30,7 @@ const useBackend = () => {
       case 'Column':
         json = {
           type: 'col',
+          size: '1',
           contains: [],
         };
         break;

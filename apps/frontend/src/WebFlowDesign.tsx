@@ -25,7 +25,6 @@ const WebFlowDesign = () => {
   const [selectedElement, setSelectedElement] = useState<string | undefined>(
     undefined
   );
-  const [openModal, setOpenModal] = useState<boolean>(true);
   let droppedID = '';
 
   const handleMouseDown = (event: React.MouseEvent<HTMLInputElement>) => {
@@ -35,7 +34,7 @@ const WebFlowDesign = () => {
 
   useEffect(() => {
     if (isCreated) {
-      fetchJSON('691b21ed8c559d22d4aeaf5c');
+      fetchJSON('691bb503afbf3054c2c37298');
     }
   }, [isCreated]);
 
@@ -43,9 +42,6 @@ const WebFlowDesign = () => {
     if (!droppedID) {
       droppedID = event.currentTarget.id;
       switch (selectedElement) {
-        case 'Column':
-          setOpenModal(true);
-          break;
         default:
           createJSON(selectedElement, event.currentTarget.id);
       }
@@ -75,7 +71,6 @@ const WebFlowDesign = () => {
       >
         <Body data={[pageData]} onMouseUp={handleMouseUp} />
       </Col>
-      <Modals show={openModal} />
     </Row>
   );
 };
