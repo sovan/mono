@@ -8,7 +8,12 @@ const Buttons = (props: any) => {
     if (props.data.act === 'delete') props.act('delete');
   };
   return (
-    <Button key="button" type={props.data.buttonType} onClick={handleClick}>
+    <Button
+      key="button"
+      type={props.data.buttonType}
+      onClick={handleClick}
+      onMouseUp={props.onMouseUp}
+    >
       {props.data.buttonText}
     </Button>
   );

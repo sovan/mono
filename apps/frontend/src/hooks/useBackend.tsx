@@ -47,6 +47,12 @@ const useBackend = () => {
           contains: [],
         };
         break;
+      case 'Button':
+        json = {
+          type: 'button',
+          buttonText: 'Simple Button',
+        };
+        break;
     }
 
     await axios
