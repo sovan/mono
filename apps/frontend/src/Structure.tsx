@@ -29,4 +29,4 @@ const Structure1 = () => {
 
   return <Body data={fetchJSON()} params={params} />;
 };
-export default Structure;
+export default Structure1;

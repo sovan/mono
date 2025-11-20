@@ -41,6 +41,12 @@ const useBackend = () => {
           text: 'Please enter something',
         };
         break;
+      case 'Accordian':
+        json = {
+          type: 'accordion',
+          contains: [],
+        };
+        break;
     }
 
     await axios
@@ -122,6 +128,42 @@ const useBackend = () => {
       .finally(() => setIsCreated(true));
   };
 
+  const deleteJSON = async (oldValue: any, parent: string) => {
+    await axios
+      .get(url + 'actual-json/' + parent)
+      .then(async (res: any) => {
+        const updateData = res.data;
+        delete updateData['_id'];
+        delete updateData['__v'];
+        const a = updateData['contains'].filter(
+          (item: any) => item !== oldValue._id
+        );
+        updateData['contains'] = a;
+        setIsCreated(false);
+        await axios
+          .post(url + parent, updateData)
+          .then(async (res: any) => {
+            if (res.status === 201) {
+              await axios
+                .delete(url + oldValue._id)
+                .then(async (res: any) => {
+                  if (res.status === 201) setIsCreated(true);
+                })
+                .catch(() => {
+                  console.log('Error');
+                })
+                .finally(() => setIsCreated(true));
+            }
+          })
+          .catch(() => {
+            console.log('Error');
+          });
+      })
+      .catch(() => {
+        console.log('Error');
+      });
+  };
+
   return {
     fetchJSON,
     createJSON,
@@ -131,6 +173,7 @@ const useBackend = () => {
     isCreated,
     propertyData,
     updateJSON,
+    deleteJSON,
   };
 };
 export default useBackend;

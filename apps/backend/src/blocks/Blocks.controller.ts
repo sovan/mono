@@ -181,7 +181,6 @@ export class BlocksController {
   }
 
   async getBlockRecurring(id: string) {
-    console.log(id + 'sovan');
     const findBlock: any = await this.BlockService.getBlockByID(id);
     if (!findBlock) throw new HttpException('Block not found', 404);
     const returnData: any = { _id: findBlock.id, type: findBlock.type };
@@ -259,6 +258,14 @@ export class BlocksController {
     if (!isValid) throw new HttpException('Block not found', 404);
     const returnData = this.getBlockRecurring(id);
     return returnData;
+  }
+
+  @Get('actual-json/:id')
+  async getBlockActualData(@Param('id') id: string) {
+    const isValid = mongoose.Types.ObjectId.isValid(id);
+    if (!isValid) throw new HttpException('Block not found', 404);
+    const findBlock: any = await this.BlockService.getBlockByID(id);
+    return findBlock;
   }
 
   @Post(':id')

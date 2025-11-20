@@ -18,7 +18,7 @@ const WebFlowDesign = () => {
     'Drop Down',
     'Check Box',
     'Radio',
-    'Accordians',
+    'Accordian',
     'List',
   ];
   const {
@@ -28,12 +28,16 @@ const WebFlowDesign = () => {
     isCreated,
     propertyData,
     updateJSON,
+    deleteJSON,
   } = useBackend();
   const [selectedElement, setSelectedElement] = useState<string | undefined>(
     undefined
   );
   const [openProperty, setOpenProperty] = useState<boolean>(false);
+  const [parentData, setParentData] = useState<string>('');
+
   let droppedID = '';
+  let droppedParent = '';
 
   const handleMouseDown = (event: React.MouseEvent<HTMLInputElement>) => {
     event.preventDefault();
@@ -42,7 +46,7 @@ const WebFlowDesign = () => {
 
   useEffect(() => {
     if (isCreated) {
-      fetchJSON('691bb503afbf3054c2c37298', 'page');
+      fetchJSON('691e52cd322067f71c52788f', 'page');
     }
   }, [isCreated]);
 
@@ -65,12 +69,20 @@ const WebFlowDesign = () => {
       setTimeout(() => {
         droppedID = '';
       }, 100);
+    } else if (!droppedParent) {
+      droppedParent = event.currentTarget.id;
+      setParentData(droppedParent);
     }
     setSelectedElement(undefined);
   };
 
   const handleForm = (formValue: any) => {
     updateJSON(formValue, propertyData);
+  };
+  const handleAction = (acion: any) => {
+    if (acion === 'delete') {
+      deleteJSON(propertyData, parentData);
+    }
   };
 
   return (
@@ -93,7 +105,11 @@ const WebFlowDesign = () => {
       </Col>
       {openProperty && (
         <Col xs="2" style={{ border: '1px solid #f00', borderLeft: '0px' }}>
-          <PropertyBox data={propertyData} formValue={handleForm} />
+          <PropertyBox
+            data={propertyData}
+            formValue={handleForm}
+            act={handleAction}
+          />
         </Col>
       )}
     </Row>

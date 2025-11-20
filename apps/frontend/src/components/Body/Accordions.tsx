@@ -7,7 +7,7 @@ const Accordions = (props: any) => {
       defaultActiveKey="0"
       id={props.data._id}
       onMouseUp={props.onMouseUp}
-      style={{ minHeight: '20px', border: '2px solid #f00' }}
+      style={{ minHeight: '40px', border: '2px solid #f00' }}
     >
       {props.data.contains.map((data: any, index: any) => {
         return (
@@ -15,8 +15,14 @@ const Accordions = (props: any) => {
             eventKey={index.toString()}
             key={props.data._id + index}
           >
-            <Accordion.Header>{index} </Accordion.Header>
-            <Accordion.Body>
+            <Accordion.Header>
+              {props.data.headers && props.data.headers[index + 1]
+                ? props.data.headers[index + 1]
+                : index + 1}
+            </Accordion.Header>
+            <Accordion.Body
+              style={{ minHeight: '40px', border: '2px solid #d2e310' }}
+            >
               <Body
                 data={[data]}
                 dataExchange={props.dataExchange}

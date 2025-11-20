@@ -14,6 +14,7 @@ const Cols = (props: any) => {
         dataExchange={props.dataExchange}
         params={props.params}
         onMouseUp={props.onMouseUp}
+        act={props.act}
       />
     </Col>
   );

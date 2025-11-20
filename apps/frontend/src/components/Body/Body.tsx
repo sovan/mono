@@ -23,6 +23,7 @@ const Body = (props: any) => {
             dataExchange={props.dataExchange}
             params={props.params}
             formValue={props.formValue}
+            act={props.act}
           />
         );
       case 'row':
@@ -32,6 +33,7 @@ const Body = (props: any) => {
             dataExchange={props.dataExchange}
             params={props.params}
             onMouseUp={props.onMouseUp}
+            act={props.act}
           />
         );
       case 'col':
@@ -41,6 +43,7 @@ const Body = (props: any) => {
             dataExchange={props.dataExchange}
             params={props.params}
             onMouseUp={props.onMouseUp}
+            act={props.act}
           />
         );
       case 'text':
@@ -58,6 +61,7 @@ const Body = (props: any) => {
             data={data}
             dataExchange={props.dataExchange}
             params={props.params}
+            act={props.act}
           />
         );
       case 'link':
