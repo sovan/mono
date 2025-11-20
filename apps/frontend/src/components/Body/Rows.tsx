@@ -1,15 +1,11 @@
 import { Row } from 'react-bootstrap';
 import Body from './Body';
+import { developmentStyle, productionStyle } from '../../styles';
 
 const Rows = (props: any) => {
   return (
     <Row
-      style={{
-        minHeight: '40px',
-        border: '2px solid #f00',
-        margin: '2px',
-        padding: '3px',
-      }}
+      style={props.dev ? developmentStyle : productionStyle}
       onMouseUp={props.onMouseUp}
       id={props.data._id}
     >
@@ -19,6 +15,7 @@ const Rows = (props: any) => {
         params={props.params}
         onMouseUp={props.onMouseUp}
         act={props.act}
+        dev={props.dev}
       />
     </Row>
   );

@@ -1,11 +1,12 @@
 import { Col } from 'react-bootstrap';
 import Body from './Body';
+import { developmentStyle, productionStyle } from '../../styles';
 
 const Cols = (props: any) => {
   return (
     <Col
       xs={props.data.size}
-      style={{ minHeight: '40px', border: '2px solid #0f0' }}
+      style={props.dev ? developmentStyle : productionStyle}
       onMouseUp={props.onMouseUp}
       id={props.data._id}
     >
@@ -15,6 +16,7 @@ const Cols = (props: any) => {
         params={props.params}
         onMouseUp={props.onMouseUp}
         act={props.act}
+        dev={props.dev}
       />
     </Col>
   );

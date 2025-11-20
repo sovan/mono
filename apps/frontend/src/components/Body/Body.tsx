@@ -24,6 +24,7 @@ const Body = (props: any) => {
             params={props.params}
             formValue={props.formValue}
             act={props.act}
+            dev={props.dev}
           />
         );
       case 'row':
@@ -34,6 +35,7 @@ const Body = (props: any) => {
             params={props.params}
             onMouseUp={props.onMouseUp}
             act={props.act}
+            dev={props.dev}
           />
         );
       case 'col':
@@ -44,6 +46,7 @@ const Body = (props: any) => {
             params={props.params}
             onMouseUp={props.onMouseUp}
             act={props.act}
+            dev={props.dev}
           />
         );
       case 'text':
@@ -53,6 +56,7 @@ const Body = (props: any) => {
             dataExchange={props.dataExchange}
             params={props.params}
             onMouseUp={props.onMouseUp}
+            dev={props.dev}
           />
         );
       case 'button':
@@ -62,6 +66,7 @@ const Body = (props: any) => {
             dataExchange={props.dataExchange}
             params={props.params}
             act={props.act}
+            dev={props.dev}
           />
         );
       case 'link':
@@ -70,6 +75,7 @@ const Body = (props: any) => {
             data={data}
             dataExchange={props.dataExchange}
             params={props.params}
+            dev={props.dev}
           />
         );
       case 'list':
@@ -78,6 +84,7 @@ const Body = (props: any) => {
             data={data}
             dataExchange={props.dataExchange}
             params={props.params}
+            dev={props.dev}
           />
         );
       case 'accordion':
@@ -87,6 +94,7 @@ const Body = (props: any) => {
             dataExchange={props.dataExchange}
             params={props.params}
             onMouseUp={props.onMouseUp}
+            dev={props.dev}
           />
         );
       case 'form':
@@ -98,6 +106,7 @@ const Body = (props: any) => {
             onMouseUp={props.onMouseUp}
             formValue={props.formValue}
             act={props.act}
+            dev={props.dev}
           />
         );
       case 'input':
@@ -106,6 +115,7 @@ const Body = (props: any) => {
             data={data}
             dataExchange={props.dataExchange}
             params={props.params}
+            dev={props.dev}
           />
         );
       case 'select':
@@ -114,6 +124,7 @@ const Body = (props: any) => {
             data={data}
             dataExchange={props.dataExchange}
             params={props.params}
+            dev={props.dev}
           />
         );
       case 'check':
@@ -123,6 +134,7 @@ const Body = (props: any) => {
             data={data}
             dataExchange={props.dataExchange}
             params={props.params}
+            dev={props.dev}
           />
         );
       case 'tick':
@@ -131,6 +143,7 @@ const Body = (props: any) => {
             data={data}
             dataExchange={props.dataExchange}
             params={props.params}
+            dev={props.dev}
           />
         );
       default: {

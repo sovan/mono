@@ -1,11 +1,12 @@
 import { Container } from 'react-bootstrap';
 import Body from './Body';
+import { developmentStyle, productionStyle } from '../../styles';
 
 const Contains = (props: any) => {
   return (
     <Container
       onMouseUp={props.onMouseUp}
-      style={{ minHeight: '40px', border: '2px solid #000', padding: '2px' }}
+      style={props.dev ? developmentStyle : productionStyle}
       id={props.data._id}
     >
       <Body
@@ -15,6 +16,7 @@ const Contains = (props: any) => {
         onMouseUp={props.onMouseUp}
         formValue={props.formValue}
         act={props.act}
+        dev={props.dev}
       />
     </Container>
   );

@@ -101,7 +101,7 @@ const WebFlowDesign = () => {
         onMouseDown={handleMouseDown}
         id="Page"
       >
-        <Body data={[pageData]} onMouseUp={handleMouseUp} />
+        <Body data={[pageData]} onMouseUp={handleMouseUp} dev={true} />
       </Col>
       {openProperty && (
         <Col xs="2" style={{ border: '1px solid #f00', borderLeft: '0px' }}>

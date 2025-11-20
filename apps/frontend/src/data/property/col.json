@@ -30,7 +30,12 @@
                                         }
                                     }
                                 ]
-                            },
+                            }
+                        ]
+                    },
+                    {
+                        "type": "row",
+                        "contains": [
                             {
                                 "type": "col",
                                 "size": "6",

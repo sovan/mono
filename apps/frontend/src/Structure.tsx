@@ -8,7 +8,7 @@ const Structure = () => {
   const { fetchJSON, pageData } = useBackend();
 
   useEffect(() => {
-    fetchJSON('691eebe133e65e7070cefe0e');
+    fetchJSON('691eea8633e65e7070cefcce');
   }, []);
 
   return <Body data={[pageData]} params={params} />;
@@ -29,4 +29,4 @@ const Structure1 = () => {
 
   return <Body data={fetchJSON()} params={params} />;
 };
-export default Structure;
+export default Structure1;
