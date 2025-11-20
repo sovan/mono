@@ -6,26 +6,55 @@
                 "type": "form",
                 "contains": [
                     {
-                        "type": "input",
-                        "inputType": "number",
-                        "name": "size",
-                        "label": "Size of the column",
-                        "validation": {
-                            "required": "Size required.",
-                            "max": {
-                                "value": 12,
-                                "message": "Size should not be more than 12."
+                        "type": "row",
+                        "contains": [
+                            {
+                                "type": "col",
+                                "size": "12",
+                                "contains": [
+                                    {
+                                        "type": "input",
+                                        "inputType": "number",
+                                        "name": "size",
+                                        "label": "Size of the column",
+                                        "validation": {
+                                            "required": "Size required.",
+                                            "max": {
+                                                "value": 12,
+                                                "message": "Size should not be more than 12."
+                                            },
+                                            "min": {
+                                                "value": 1,
+                                                "message": "Size should be more than 0."
+                                            }
+                                        }
+                                    }
+                                ]
                             },
-                            "min": {
-                                "value": 1,
-                                "message": "Size should be more than 0."
+                            {
+                                "type": "col",
+                                "size": "6",
+                                "contains": [
+                                    {
+                                        "type": "button",
+                                        "buttonType": "button",
+                                        "buttonText": "Delete",
+                                        "act": "delete"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "col",
+                                "size": "6",
+                                "contains": [
+                                    {
+                                        "type": "button",
+                                        "buttonType": "submit",
+                                        "buttonText": "Submit"
+                                    }
+                                ]
                             }
-                        }
-                    },
-                    {
-                        "type": "button",
-                        "buttonType": "submit",
-                        "buttonText": "Submit"
+                        ]
                     }
                 ]
             }

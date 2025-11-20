@@ -129,39 +129,51 @@ const useBackend = () => {
   };
 
   const deleteJSON = async (oldValue: any, parent: string) => {
-    await axios
-      .get(url + 'actual-json/' + parent)
-      .then(async (res: any) => {
-        const updateData = res.data;
-        delete updateData['_id'];
-        delete updateData['__v'];
-        const a = updateData['contains'].filter(
-          (item: any) => item !== oldValue._id
-        );
-        updateData['contains'] = a;
-        setIsCreated(false);
-        await axios
-          .post(url + parent, updateData)
-          .then(async (res: any) => {
-            if (res.status === 201) {
-              await axios
-                .delete(url + oldValue._id)
-                .then(async (res: any) => {
-                  if (res.status === 201) setIsCreated(true);
-                })
-                .catch(() => {
-                  console.log('Error');
-                })
-                .finally(() => setIsCreated(true));
-            }
-          })
-          .catch(() => {
-            console.log('Error');
-          });
-      })
-      .catch(() => {
-        console.log('Error');
-      });
+    setIsCreated(false);
+    if (parent !== 'Page') {
+      await axios
+        .get(url + 'actual-json/' + parent)
+        .then(async (res: any) => {
+          const updateData = res.data;
+          delete updateData['_id'];
+          delete updateData['__v'];
+          const a = updateData['contains'].filter(
+            (item: any) => item !== oldValue._id
+          );
+          updateData['contains'] = a;
+          await axios
+            .post(url + parent, updateData)
+            .then(async (res: any) => {
+              if (res.status === 201) {
+                await axios
+                  .delete(url + oldValue._id)
+                  .then(async (res: any) => {
+                    if (res.status === 201) setIsCreated(true);
+                  })
+                  .catch(() => {
+                    console.log('Error');
+                  })
+                  .finally(() => setIsCreated(true));
+              }
+            })
+            .catch(() => {
+              console.log('Error');
+            });
+        })
+        .catch(() => {
+          console.log('Error');
+        });
+    } else {
+      await axios
+        .delete(url + oldValue._id)
+        .then(async (res: any) => {
+          if (res.status === 201) setIsCreated(true);
+        })
+        .catch(() => {
+          console.log('Error');
+        })
+        .finally(() => setIsCreated(true));
+    }
   };
 
   return {

@@ -20,6 +20,7 @@ const Forms = (props: any) => {
       <Body
         data={props.data.contains}
         dataExchange={{ touchedFields, errors, register }}
+        act={props.act}
       />
     </Form>
   );

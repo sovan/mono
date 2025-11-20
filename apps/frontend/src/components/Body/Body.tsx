@@ -97,6 +97,7 @@ const Body = (props: any) => {
             params={props.params}
             onMouseUp={props.onMouseUp}
             formValue={props.formValue}
+            act={props.act}
           />
         );
       case 'input':
