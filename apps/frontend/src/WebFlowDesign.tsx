@@ -51,8 +51,6 @@ const WebFlowDesign = () => {
   }, [isCreated]);
 
   const handleMouseUp = (event: React.MouseEvent<HTMLInputElement>) => {
-    console.log(event.currentTarget.id);
-    return;
     if (!droppedID) {
       droppedID = event.currentTarget.id;
       console.log(droppedID, selectedElement);
