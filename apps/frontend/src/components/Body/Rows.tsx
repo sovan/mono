@@ -1,11 +1,11 @@
 import { Row } from 'react-bootstrap';
 import Body from './Body';
-import { developmentStyle, productionStyle } from '../../styles';
+import { devRow, productionStyle } from '../../styles';
 
 const Rows = (props: any) => {
   return (
     <Row
-      style={props.dev ? developmentStyle : productionStyle}
+      style={props.dev ? devRow : productionStyle}
       onMouseUp={props.onMouseUp}
       id={props.data._id}
     >

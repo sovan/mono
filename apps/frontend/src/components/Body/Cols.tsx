@@ -1,12 +1,12 @@
 import { Col } from 'react-bootstrap';
 import Body from './Body';
-import { developmentStyle, productionStyle } from '../../styles';
+import { devCol, productionStyle } from '../../styles';
 
 const Cols = (props: any) => {
   return (
     <Col
       xs={props.data.size}
-      style={props.dev ? developmentStyle : productionStyle}
+      style={props.dev ? devCol : productionStyle}
       onMouseUp={props.onMouseUp}
       id={props.data._id}
     >

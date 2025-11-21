@@ -1,12 +1,12 @@
 import { Container } from 'react-bootstrap';
 import Body from './Body';
-import { developmentStyle, productionStyle } from '../../styles';
+import { devContainer, productionStyle } from '../../styles';
 
 const Contains = (props: any) => {
   return (
     <Container
       onMouseUp={props.onMouseUp}
-      style={props.dev ? developmentStyle : productionStyle}
+      style={props.dev ? devContainer : productionStyle}
       id={props.data._id}
     >
       <Body

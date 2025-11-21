@@ -46,11 +46,13 @@ const WebFlowDesign = () => {
 
   useEffect(() => {
     if (isCreated) {
-      fetchJSON('691eebe133e65e7070cefe0e', 'page');
+      fetchJSON('691f0aea33e65e7070cf0bb1', 'page');
     }
   }, [isCreated]);
 
   const handleMouseUp = (event: React.MouseEvent<HTMLInputElement>) => {
+    console.log(event.currentTarget.id);
+    return;
     if (!droppedID) {
       droppedID = event.currentTarget.id;
       console.log(droppedID, selectedElement);

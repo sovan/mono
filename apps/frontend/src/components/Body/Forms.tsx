@@ -1,6 +1,7 @@
 import { Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import Body from './Body';
+import { devForm, productionStyle } from '../../styles';
 
 const Forms = (props: any) => {
   const {
@@ -16,7 +17,10 @@ const Forms = (props: any) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <Form
+      onSubmit={handleSubmit(onSubmit)}
+      style={props.dev ? devForm : productionStyle}
+    >
       <Body
         data={props.data.contains}
         dataExchange={{ touchedFields, errors, register }}
