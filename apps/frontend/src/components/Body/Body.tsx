@@ -117,7 +117,6 @@ const Body = (props: any) => {
             onMouseMove={props.onMouseMove}
             hoverID={props.hoverID}
             formValue={props.formValue}
-            act={props.act}
             dev={props.dev}
           />
         );
@@ -128,6 +127,9 @@ const Body = (props: any) => {
             dataExchange={props.dataExchange}
             params={props.params}
             dev={props.dev}
+            onMouseUp={props.onMouseUp}
+            onMouseMove={props.onMouseMove}
+            hoverID={props.hoverID}
           />
         );
       case 'select':
