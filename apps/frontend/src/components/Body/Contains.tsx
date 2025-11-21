@@ -1,35 +1,16 @@
-import { Container, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Container, OverlayTrigger } from 'react-bootstrap';
 import Body from './Body';
-import { devContainer, productionStyle, devHoverContainer } from '../../styles';
-
+import { style, tooltip } from '../../styles';
 const Contains = (props: any) => {
-  const style = () => {
-    if (props.dev) {
-      if (props.hoverID === props.data._id) {
-        return devHoverContainer;
-      } else {
-        return devContainer;
-      }
-    } else {
-      return productionStyle;
-    }
-  };
-
-  const tooltip = (
-    <Tooltip id="tooltip">
-      <strong>Container</strong>
-    </Tooltip>
-  );
-
   return (
     <OverlayTrigger
       placement="top"
-      overlay={props.hoverID === props.data._id ? tooltip : <></>}
+      overlay={props.hoverID === props.data._id ? tooltip('Container') : <></>}
     >
       <Container
         onMouseUp={props.onMouseUp}
         onMouseMove={props.onMouseMove}
-        style={style()}
+        style={style(props.dev, props.hoverID, props.data._id)}
         id={props.data._id}
       >
         <Body

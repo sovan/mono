@@ -1,3 +1,5 @@
+import { Tooltip } from 'react-bootstrap';
+
 export const productionStyle = {};
 export const developmentStyle = {
   minHeight: '40px',
@@ -5,26 +7,28 @@ export const developmentStyle = {
   padding: '5px',
   cursor: 'pointer',
   backgroundColor: '#fff',
-  border: '1px dotted',
+  border: '1px dotted #000',
 };
 
-export const devContainer = {
-  ...developmentStyle,
-  borderColor: '#5c1aeb',
-};
 export const devHoverContainer = {
-  ...devContainer,
-  backgroundColor: '#5c1aeb',
+  ...developmentStyle,
+  backgroundColor: '#a4a2a2',
 };
 
-export const devRow = { ...developmentStyle, borderColor: '#bc2188' };
-export const devHoverRow = { ...devContainer, backgroundColor: '#bc2188' };
+export const style = (isDev: boolean, hoverID: string, ID: string) => {
+  if (isDev === true) {
+    if (hoverID === ID) {
+      return devHoverContainer;
+    } else {
+      return developmentStyle;
+    }
+  } else {
+    return productionStyle;
+  }
+};
 
-export const devCol = { ...developmentStyle, borderColor: '#d2d912' };
-export const devHoverCol = { ...developmentStyle, backgroundColor: '#d2d912' };
-
-export const devText = { ...developmentStyle, borderColor: '#d98888' };
-export const devHoverText = { ...developmentStyle, backgroundColor: '#d98888' };
-
-export const devForm = { ...developmentStyle, borderColor: '#1aeb4b' };
-export const devHoverForm = { ...developmentStyle, backgroundColor: '#1aeb4b' };
+export const tooltip = (tooltips: string) => (
+  <Tooltip id="tooltip">
+    <strong>{tooltips}</strong>
+  </Tooltip>
+);

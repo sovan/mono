@@ -48,7 +48,7 @@ const WebFlowDesign = () => {
 
   useEffect(() => {
     if (isCreated) {
-      fetchJSON('691f0aea33e65e7070cf0bb1', 'page');
+      fetchJSON('691fe6f333e65e7070cf1618', 'page');
     }
   }, [isCreated]);
 
@@ -98,7 +98,7 @@ const WebFlowDesign = () => {
   };
 
   return (
-    <Row style={{ margin: '5px' }}>
+    <Row style={{ margin: '5px' }} onMouseMove={handleMouseMove}>
       <Col xs="2" style={{ border: '1px solid #f00', borderRight: '0px' }}>
         {widget.map((eachWidget) => (
           <Col id={eachWidget} onMouseDown={handleMouseDown} key={eachWidget}>

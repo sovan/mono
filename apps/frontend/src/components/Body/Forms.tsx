@@ -1,8 +1,11 @@
 import { Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import Body from './Body';
-import { devForm, productionStyle } from '../../styles';
-
+import {
+  productionStyle,
+  devHoverContainer,
+  developmentStyle,
+} from '../../styles';
 const Forms = (props: any) => {
   const {
     register,
@@ -12,15 +15,23 @@ const Forms = (props: any) => {
     shouldFocusError: true,
     mode: 'onTouched',
   });
+  const style = () => {
+    if (props.dev) {
+      if (props.hoverID === props.data._id) {
+        return devHoverContainer;
+      } else {
+        return developmentStyle;
+      }
+    } else {
+      return productionStyle;
+    }
+  };
   const onSubmit = async (data: any) => {
     props.formValue(data);
   };
 
   return (
-    <Form
-      onSubmit={handleSubmit(onSubmit)}
-      style={props.dev ? devForm : productionStyle}
-    >
+    <Form onSubmit={handleSubmit(onSubmit)} style={style()}>
       <Body
         data={props.data.contains}
         dataExchange={{ touchedFields, errors, register }}
