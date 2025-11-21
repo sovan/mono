@@ -1,11 +1,7 @@
-import { Form } from 'react-bootstrap';
+import { Form, OverlayTrigger } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import Body from './Body';
-import {
-  productionStyle,
-  devHoverContainer,
-  developmentStyle,
-} from '../../styles';
+import { style, tooltip } from '../../styles';
 const Forms = (props: any) => {
   const {
     register,
@@ -15,30 +11,38 @@ const Forms = (props: any) => {
     shouldFocusError: true,
     mode: 'onTouched',
   });
-  const style = () => {
-    if (props.dev) {
-      if (props.hoverID === props.data._id) {
-        return devHoverContainer;
-      } else {
-        return developmentStyle;
-      }
-    } else {
-      return productionStyle;
-    }
-  };
+
   const onSubmit = async (data: any) => {
     props.formValue(data);
   };
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)} style={style()}>
-      <Body
-        data={props.data.contains}
-        dataExchange={{ touchedFields, errors, register }}
-        act={props.act}
-        dev={props.dev}
-      />
-    </Form>
+    <OverlayTrigger
+      placement="top"
+      overlay={
+        props.hoverID === props.data._id && props.dev ? tooltip('Form') : <></>
+      }
+    >
+      <Form
+        onSubmit={handleSubmit(onSubmit)}
+        onMouseUp={props.onMouseUp}
+        onMouseMove={props.onMouseMove}
+        style={style(props.dev, props.hoverID === props.data._id)}
+        id={props.data._id}
+      >
+        <Body
+          data={props.data.contains}
+          dataExchange={{ touchedFields, errors, register }}
+          act={props.act}
+          dev={props.dev}
+          params={props.params}
+          onMouseUp={props.onMouseUp}
+          onMouseMove={props.onMouseMove}
+          hoverID={props.hoverID}
+          formValue={props.formValue}
+        />
+      </Form>
+    </OverlayTrigger>
   );
 };
 export default Forms;

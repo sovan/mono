@@ -6,7 +6,13 @@ const Cols = (props: any) => {
   return (
     <OverlayTrigger
       placement="top"
-      overlay={props.hoverID === props.data._id ? tooltip('Column') : <></>}
+      overlay={
+        props.hoverID === props.data._id && props.dev ? (
+          tooltip('Column')
+        ) : (
+          <></>
+        )
+      }
     >
       <Col
         xs={props.data.size}

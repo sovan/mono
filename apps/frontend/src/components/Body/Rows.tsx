@@ -6,7 +6,9 @@ const Rows = (props: any) => {
   return (
     <OverlayTrigger
       placement="top"
-      overlay={props.hoverID === props.data._id ? tooltip('Row') : <></>}
+      overlay={
+        props.hoverID === props.data._id && props.dev ? tooltip('Row') : <></>
+      }
     >
       <Row
         style={style(props.dev, props.hoverID === props.data._id)}

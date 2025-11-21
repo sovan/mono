@@ -53,6 +53,20 @@ const useBackend = () => {
           buttonText: 'Simple Button',
         };
         break;
+      case 'Form':
+        json = {
+          type: 'form',
+          contains: [],
+        };
+        break;
+      case 'Text Input':
+        json = {
+          type: 'input',
+          inputType: 'text',
+          name: 'userName',
+          label: 'Enter user name',
+        };
+        break;
     }
 
     await axios

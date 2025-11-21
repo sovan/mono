@@ -5,7 +5,13 @@ const Contains = (props: any) => {
   return (
     <OverlayTrigger
       placement="top"
-      overlay={props.hoverID === props.data._id ? tooltip('Container') : <></>}
+      overlay={
+        props.hoverID === props.data._id && props.dev ? (
+          tooltip('Container')
+        ) : (
+          <></>
+        )
+      }
     >
       <Container
         onMouseUp={props.onMouseUp}

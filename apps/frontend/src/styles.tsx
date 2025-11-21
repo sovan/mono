@@ -9,10 +9,9 @@ export const developmentStyle = {
   backgroundColor: '#fff',
   border: '1px dotted #000',
 };
-
 export const devHoverContainer = {
   ...developmentStyle,
-  backgroundColor: '#a4a2a2',
+  backgroundColor: '#c2c0c0',
 };
 
 export const style = (isDev: boolean, hovered: boolean) => {
