@@ -7,6 +7,7 @@ const Accordions = (props: any) => {
       defaultActiveKey="0"
       id={props.data._id}
       onMouseUp={props.onMouseUp}
+      onMouseMove={props.onMouseMove}
       style={{ minHeight: '40px', border: '2px solid #f00' }}
     >
       {props.data.contains.map((data: any, index: any) => {
@@ -28,6 +29,8 @@ const Accordions = (props: any) => {
                 dataExchange={props.dataExchange}
                 params={props.params}
                 onMouseUp={props.onMouseUp}
+                onMouseMove={props.onMouseMove}
+                hoverID={props.hoverID}
               />
             </Accordion.Body>
           </Accordion.Item>

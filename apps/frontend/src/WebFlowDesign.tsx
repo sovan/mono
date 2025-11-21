@@ -35,8 +35,10 @@ const WebFlowDesign = () => {
   );
   const [openProperty, setOpenProperty] = useState<boolean>(false);
   const [parentData, setParentData] = useState<string>('');
+  const [mouseHoverID, setMouseHoverID] = useState<string>('');
 
   let droppedID = '';
+  let hoverID = '';
   let droppedParent = '';
 
   const handleMouseDown = (event: React.MouseEvent<HTMLInputElement>) => {
@@ -85,6 +87,16 @@ const WebFlowDesign = () => {
     }
   };
 
+  const handleMouseMove = (event: React.MouseEvent<HTMLInputElement>) => {
+    if (!hoverID) {
+      hoverID = event.currentTarget.id;
+      setMouseHoverID(hoverID);
+      setTimeout(() => {
+        hoverID = '';
+      }, 100);
+    }
+  };
+
   return (
     <Row style={{ margin: '5px' }}>
       <Col xs="2" style={{ border: '1px solid #f00', borderRight: '0px' }}>
@@ -101,7 +113,13 @@ const WebFlowDesign = () => {
         onMouseDown={handleMouseDown}
         id="Page"
       >
-        <Body data={[pageData]} onMouseUp={handleMouseUp} dev={true} />
+        <Body
+          data={[pageData]}
+          onMouseUp={handleMouseUp}
+          onMouseMove={handleMouseMove}
+          hoverID={mouseHoverID}
+          dev={true}
+        />
       </Col>
       {openProperty && (
         <Col xs="2" style={{ border: '1px solid #f00', borderLeft: '0px' }}>

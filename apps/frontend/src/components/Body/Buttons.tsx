@@ -13,6 +13,7 @@ const Buttons = (props: any) => {
       type={props.data.buttonType}
       onClick={handleClick}
       onMouseUp={props.onMouseUp}
+      onMouseMove={props.onMouseMove}
     >
       {props.data.buttonText}
     </Button>

@@ -19,6 +19,8 @@ const Body = (props: any) => {
         return (
           <Contains
             onMouseUp={props.onMouseUp}
+            onMouseMove={props.onMouseMove}
+            hoverID={props.hoverID}
             data={data}
             dataExchange={props.dataExchange}
             params={props.params}
@@ -34,6 +36,8 @@ const Body = (props: any) => {
             dataExchange={props.dataExchange}
             params={props.params}
             onMouseUp={props.onMouseUp}
+            onMouseMove={props.onMouseMove}
+            hoverID={props.hoverID}
             act={props.act}
             dev={props.dev}
           />
@@ -45,6 +49,8 @@ const Body = (props: any) => {
             dataExchange={props.dataExchange}
             params={props.params}
             onMouseUp={props.onMouseUp}
+            onMouseMove={props.onMouseMove}
+            hoverID={props.hoverID}
             act={props.act}
             dev={props.dev}
           />
@@ -56,6 +62,8 @@ const Body = (props: any) => {
             dataExchange={props.dataExchange}
             params={props.params}
             onMouseUp={props.onMouseUp}
+            onMouseMove={props.onMouseMove}
+            hoverID={props.hoverID}
             dev={props.dev}
           />
         );
@@ -94,6 +102,8 @@ const Body = (props: any) => {
             dataExchange={props.dataExchange}
             params={props.params}
             onMouseUp={props.onMouseUp}
+            onMouseMove={props.onMouseMove}
+            hoverID={props.hoverID}
             dev={props.dev}
           />
         );
@@ -104,6 +114,8 @@ const Body = (props: any) => {
             dataExchange={props.dataExchange}
             params={props.params}
             onMouseUp={props.onMouseUp}
+            onMouseMove={props.onMouseMove}
+            hoverID={props.hoverID}
             formValue={props.formValue}
             act={props.act}
             dev={props.dev}
