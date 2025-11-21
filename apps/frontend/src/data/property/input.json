@@ -1,7 +1,27 @@
 [
     {
-        "type": "container",
+        "type": "form",
         "contains": [
+            {
+                "type": "row",
+                "contains": [
+                    {
+                        "type": "col",
+                        "size": "12",
+                        "contains": [
+                            {
+                                "type": "input",
+                                "inputType": "text",
+                                "name": "label",
+                                "label": "Enter label",
+                                "validation": {
+                                    "required": "Label required."
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
             {
                 "type": "row",
                 "contains": [
@@ -14,6 +34,17 @@
                                 "buttonType": "button",
                                 "buttonText": "Delete",
                                 "act": "delete"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "col",
+                        "size": "6",
+                        "contains": [
+                            {
+                                "type": "button",
+                                "buttonType": "submit",
+                                "buttonText": "Submit"
                             }
                         ]
                     }

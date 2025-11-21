@@ -135,6 +135,14 @@ const useBackend = () => {
           text: newValue.text,
         };
         break;
+      case 'input':
+        json = {
+          type: oldValue.type,
+          label: newValue.label,
+        };
+        break;
+      default:
+        console.log('Sovan: Update JSON is not created for ' + oldValue.type);
     }
     setIsCreated(false);
     await axios
