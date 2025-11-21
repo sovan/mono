@@ -1,18 +1,13 @@
-import { Col, OverlayTrigger } from 'react-bootstrap';
+import { Col, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import Body from './Body';
-import { style, tooltip } from '../../styles';
+import { style } from '../../styles';
 
 const Cols = (props: any) => {
   return (
     <OverlayTrigger
       placement="top"
-      overlay={
-        props.hoverID === props.data._id && props.dev ? (
-          tooltip('Column')
-        ) : (
-          <></>
-        )
-      }
+      overlay={<Tooltip id={'tooltip' + props.data._id}>Column</Tooltip>}
+      show={props.hoverID === props.data._id && props.dev}
     >
       <Col
         xs={props.data.size}

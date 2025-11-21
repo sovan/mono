@@ -1,14 +1,13 @@
-import { Row, OverlayTrigger } from 'react-bootstrap';
+import { Row, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import Body from './Body';
-import { style, tooltip } from '../../styles';
+import { style } from '../../styles';
 
 const Rows = (props: any) => {
   return (
     <OverlayTrigger
       placement="top"
-      overlay={
-        props.hoverID === props.data._id && props.dev ? tooltip('Row') : <></>
-      }
+      overlay={<Tooltip id={'tooltip' + props.data._id}>Row</Tooltip>}
+      show={props.hoverID === props.data._id && props.dev}
     >
       <Row
         style={style(props.dev, props.hoverID === props.data._id)}

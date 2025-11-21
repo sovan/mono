@@ -1,5 +1,3 @@
-import { Tooltip } from 'react-bootstrap';
-
 export const productionStyle = {};
 export const developmentStyle = {
   minHeight: '40px',
@@ -25,9 +23,3 @@ export const style = (isDev: boolean, hovered: boolean) => {
     return productionStyle;
   }
 };
-
-export const tooltip = (tooltips: string) => (
-  <Tooltip id="tooltip">
-    <strong>{tooltips}</strong>
-  </Tooltip>
-);

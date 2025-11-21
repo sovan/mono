@@ -204,7 +204,9 @@ export class BlocksController {
         returnData.inputType = findBlock.inputType;
         returnData.name = findBlock.name;
         returnData.label = findBlock.label;
-        returnData.validation = findBlock.validation;
+        returnData.validation = findBlock.validation
+          ? findBlock.validation
+          : {};
         break;
       }
 

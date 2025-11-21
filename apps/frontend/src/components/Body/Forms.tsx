@@ -1,7 +1,7 @@
-import { Form, OverlayTrigger } from 'react-bootstrap';
+import { Form, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import Body from './Body';
-import { style, tooltip } from '../../styles';
+import { style } from '../../styles';
 const Forms = (props: any) => {
   const {
     register,
@@ -19,9 +19,8 @@ const Forms = (props: any) => {
   return (
     <OverlayTrigger
       placement="top"
-      overlay={
-        props.hoverID === props.data._id && props.dev ? tooltip('Form') : <></>
-      }
+      overlay={<Tooltip id={'tooltip' + props.data._id}>Form</Tooltip>}
+      show={props.hoverID === props.data._id && props.dev}
     >
       <Form
         onSubmit={handleSubmit(onSubmit)}

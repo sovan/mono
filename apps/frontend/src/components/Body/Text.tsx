@@ -1,11 +1,12 @@
-import { style, tooltip } from '../../styles';
-import { OverlayTrigger } from 'react-bootstrap';
+import { style } from '../../styles';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 const Text = (props: any) => {
   return (
     <OverlayTrigger
       placement="top"
-      overlay={props.hoverID === props.data._id ? tooltip('Text') : <></>}
+      overlay={<Tooltip id={'tooltip' + props.data._id}>Column</Tooltip>}
+      show={props.hoverID === props.data._id && props.dev}
     >
       <div
         key={props.data._id}

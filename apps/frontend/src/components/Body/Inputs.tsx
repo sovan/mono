@@ -1,5 +1,5 @@
-import { Form, OverlayTrigger } from 'react-bootstrap';
-import { style, tooltip } from '../../styles';
+import { Form, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { style } from '../../styles';
 
 const Inputs = (props: any) => {
   if (props.data.visibility && props.data.visibility === 'hidden') {
@@ -15,12 +15,9 @@ const Inputs = (props: any) => {
     <OverlayTrigger
       placement="top"
       overlay={
-        props.hoverID === props.data._id && props.dev ? (
-          tooltip(toolTipsText())
-        ) : (
-          <></>
-        )
+        <Tooltip id={'tooltip' + props.data._id}>{toolTipsText()}</Tooltip>
       }
+      show={props.hoverID === props.data._id && props.dev}
     >
       <Form.Group
         style={style(props.dev, props.hoverID === props.data._id)}

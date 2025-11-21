@@ -48,7 +48,7 @@ const WebFlowDesign = () => {
 
   useEffect(() => {
     if (isCreated) {
-      fetchJSON('692070dc33e65e7070cf21e1', 'page');
+      fetchJSON('6920eda279f2d090bce0bd97', 'page');
     }
   }, [isCreated]);
 
@@ -119,6 +119,7 @@ const WebFlowDesign = () => {
           onMouseMove={handleMouseMove}
           hoverID={mouseHoverID}
           dev={true}
+          key={'page'}
         />
       </Col>
       {openProperty && (
