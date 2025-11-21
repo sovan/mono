@@ -1,4 +1,4 @@
-import { Row } from 'react-bootstrap';
+import { Row, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import Body from './Body';
 import { devRow, productionStyle, devHoverRow } from '../../styles';
 
@@ -14,24 +14,34 @@ const Rows = (props: any) => {
       return productionStyle;
     }
   };
+  const tooltip = (
+    <Tooltip id="tooltip">
+      <strong>Row</strong>
+    </Tooltip>
+  );
   return (
-    <Row
-      style={style()}
-      onMouseUp={props.onMouseUp}
-      onMouseMove={props.onMouseMove}
-      id={props.data._id}
+    <OverlayTrigger
+      placement="top"
+      overlay={props.hoverID === props.data._id ? tooltip : <></>}
     >
-      <Body
-        data={props.data.contains}
-        dataExchange={props.dataExchange}
-        params={props.params}
+      <Row
+        style={style()}
         onMouseUp={props.onMouseUp}
         onMouseMove={props.onMouseMove}
-        hoverID={props.hoverID}
-        act={props.act}
-        dev={props.dev}
-      />
-    </Row>
+        id={props.data._id}
+      >
+        <Body
+          data={props.data.contains}
+          dataExchange={props.dataExchange}
+          params={props.params}
+          onMouseUp={props.onMouseUp}
+          onMouseMove={props.onMouseMove}
+          hoverID={props.hoverID}
+          act={props.act}
+          dev={props.dev}
+        />
+      </Row>
+    </OverlayTrigger>
   );
 };
 export default Rows;

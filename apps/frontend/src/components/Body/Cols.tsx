@@ -1,4 +1,4 @@
-import { Col } from 'react-bootstrap';
+import { Col, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import Body from './Body';
 import { devCol, productionStyle, devHoverCol } from '../../styles';
 
@@ -14,25 +14,35 @@ const Cols = (props: any) => {
       return productionStyle;
     }
   };
+  const tooltip = (
+    <Tooltip id="tooltip">
+      <strong>Column</strong>
+    </Tooltip>
+  );
   return (
-    <Col
-      xs={props.data.size}
-      style={style()}
-      onMouseUp={props.onMouseUp}
-      onMouseMove={props.onMouseMove}
-      id={props.data._id}
+    <OverlayTrigger
+      placement="top"
+      overlay={props.hoverID === props.data._id ? tooltip : <></>}
     >
-      <Body
-        data={props.data.contains}
-        dataExchange={props.dataExchange}
-        params={props.params}
+      <Col
+        xs={props.data.size}
+        style={style()}
         onMouseUp={props.onMouseUp}
         onMouseMove={props.onMouseMove}
-        hoverID={props.hoverID}
-        act={props.act}
-        dev={props.dev}
-      />
-    </Col>
+        id={props.data._id}
+      >
+        <Body
+          data={props.data.contains}
+          dataExchange={props.dataExchange}
+          params={props.params}
+          onMouseUp={props.onMouseUp}
+          onMouseMove={props.onMouseMove}
+          hoverID={props.hoverID}
+          act={props.act}
+          dev={props.dev}
+        />
+      </Col>
+    </OverlayTrigger>
   );
 };
 export default Cols;

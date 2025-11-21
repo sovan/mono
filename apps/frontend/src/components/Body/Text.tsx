@@ -1,4 +1,5 @@
 import { devText, productionStyle, devHoverText } from '../../styles';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 const Text = (props: any) => {
   const style = () => {
@@ -12,16 +13,26 @@ const Text = (props: any) => {
       return productionStyle;
     }
   };
+  const tooltip = (
+    <Tooltip id="tooltip">
+      <strong>Text</strong>
+    </Tooltip>
+  );
   return (
-    <div
-      key={props.data._id}
-      id={props.data._id}
-      onMouseUp={props.onMouseUp}
-      onMouseMove={props.onMouseMove}
-      style={style()}
+    <OverlayTrigger
+      placement="top"
+      overlay={props.hoverID === props.data._id ? tooltip : <></>}
     >
-      {props.data.text}
-    </div>
+      <div
+        key={props.data._id}
+        id={props.data._id}
+        onMouseUp={props.onMouseUp}
+        onMouseMove={props.onMouseMove}
+        style={style()}
+      >
+        {props.data.text}
+      </div>
+    </OverlayTrigger>
   );
 };
 export default Text;
