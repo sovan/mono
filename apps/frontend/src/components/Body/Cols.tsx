@@ -10,7 +10,7 @@ const Cols = (props: any) => {
     >
       <Col
         xs={props.data.size}
-        style={style(props.dev, props.hoverID, props.data._id)}
+        style={style(props.dev, props.hoverID === props.data._id)}
         onMouseUp={props.onMouseUp}
         onMouseMove={props.onMouseMove}
         id={props.data._id}

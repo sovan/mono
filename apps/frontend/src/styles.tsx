@@ -15,9 +15,9 @@ export const devHoverContainer = {
   backgroundColor: '#a4a2a2',
 };
 
-export const style = (isDev: boolean, hoverID: string, ID: string) => {
-  if (isDev === true) {
-    if (hoverID === ID) {
+export const style = (isDev: boolean, hovered: boolean) => {
+  if (isDev) {
+    if (hovered) {
       return devHoverContainer;
     } else {
       return developmentStyle;

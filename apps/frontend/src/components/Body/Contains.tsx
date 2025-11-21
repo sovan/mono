@@ -10,7 +10,7 @@ const Contains = (props: any) => {
       <Container
         onMouseUp={props.onMouseUp}
         onMouseMove={props.onMouseMove}
-        style={style(props.dev, props.hoverID, props.data._id)}
+        style={style(props.dev, props.hoverID === props.data._id)}
         id={props.data._id}
       >
         <Body
