@@ -5,12 +5,18 @@ const Inputs = (props: any) => {
   if (props.data.visibility && props.data.visibility === 'hidden') {
     return;
   }
+  const toolTipsText = () => {
+    if (props.data.inputType === 'text') {
+      return 'Text Input';
+    }
+    return 'Plz add tooltips';
+  };
   return (
     <OverlayTrigger
       placement="top"
       overlay={
         props.hoverID === props.data._id && props.dev ? (
-          tooltip('Inputs')
+          tooltip(toolTipsText())
         ) : (
           <></>
         )

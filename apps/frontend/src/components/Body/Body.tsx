@@ -118,6 +118,7 @@ const Body = (props: any) => {
             hoverID={props.hoverID}
             formValue={props.formValue}
             dev={props.dev}
+            act={props.act}
           />
         );
       case 'input':

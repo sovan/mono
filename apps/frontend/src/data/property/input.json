@@ -1,0 +1,24 @@
+[
+    {
+        "type": "container",
+        "contains": [
+            {
+                "type": "row",
+                "contains": [
+                    {
+                        "type": "col",
+                        "size": "6",
+                        "contains": [
+                            {
+                                "type": "button",
+                                "buttonType": "button",
+                                "buttonText": "Delete",
+                                "act": "delete"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
