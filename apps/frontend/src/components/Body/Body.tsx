@@ -40,6 +40,7 @@ const Body = (props: any) => {
             hoverID={props.hoverID}
             act={props.act}
             dev={props.dev}
+            formValue={props.formValue}
           />
         );
       case 'col':
@@ -53,6 +54,7 @@ const Body = (props: any) => {
             hoverID={props.hoverID}
             act={props.act}
             dev={props.dev}
+            formValue={props.formValue}
           />
         );
       case 'text':
@@ -65,6 +67,7 @@ const Body = (props: any) => {
             onMouseMove={props.onMouseMove}
             hoverID={props.hoverID}
             dev={props.dev}
+            formValue={props.formValue}
           />
         );
       case 'button':
@@ -75,6 +78,7 @@ const Body = (props: any) => {
             params={props.params}
             act={props.act}
             dev={props.dev}
+            formValue={props.formValue}
           />
         );
       case 'link':
@@ -84,6 +88,7 @@ const Body = (props: any) => {
             dataExchange={props.dataExchange}
             params={props.params}
             dev={props.dev}
+            formValue={props.formValue}
           />
         );
       case 'list':
@@ -93,6 +98,7 @@ const Body = (props: any) => {
             dataExchange={props.dataExchange}
             params={props.params}
             dev={props.dev}
+            formValue={props.formValue}
           />
         );
       case 'accordion':
@@ -105,6 +111,7 @@ const Body = (props: any) => {
             onMouseMove={props.onMouseMove}
             hoverID={props.hoverID}
             dev={props.dev}
+            formValue={props.formValue}
           />
         );
       case 'form':
@@ -131,6 +138,7 @@ const Body = (props: any) => {
             onMouseUp={props.onMouseUp}
             onMouseMove={props.onMouseMove}
             hoverID={props.hoverID}
+            formValue={props.formValue}
           />
         );
       case 'select':
@@ -140,6 +148,7 @@ const Body = (props: any) => {
             dataExchange={props.dataExchange}
             params={props.params}
             dev={props.dev}
+            formValue={props.formValue}
           />
         );
       case 'check':
@@ -153,6 +162,7 @@ const Body = (props: any) => {
             onMouseUp={props.onMouseUp}
             onMouseMove={props.onMouseMove}
             hoverID={props.hoverID}
+            formValue={props.formValue}
           />
         );
       case 'tick':
@@ -165,6 +175,7 @@ const Body = (props: any) => {
             onMouseUp={props.onMouseUp}
             onMouseMove={props.onMouseMove}
             hoverID={props.hoverID}
+            formValue={props.formValue}
           />
         );
       default: {

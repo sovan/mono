@@ -158,6 +158,10 @@ const useBackend = () => {
       .finally(() => setIsLoading(false));
   };
 
+  const insertData = async (formValue: any) => {
+    console.log(JSON.stringify(formValue));
+  };
+
   const updateJSON = async (newValue: any, oldValue: any) => {
     let json = {};
     switch (oldValue.type) {
@@ -253,6 +257,7 @@ const useBackend = () => {
     propertyData,
     updateJSON,
     deleteJSON,
+    insertData,
   };
 };
 export default useBackend;

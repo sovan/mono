@@ -12,9 +12,7 @@ const Forms = (props: any) => {
     mode: 'onTouched',
   });
 
-  const onSubmit = async (data: any) => {
-    props.formValue(data);
-  };
+  const onSubmit = async (data: any) => props.formValue(data);
 
   return (
     <OverlayTrigger
@@ -38,7 +36,6 @@ const Forms = (props: any) => {
           onMouseUp={props.onMouseUp}
           onMouseMove={props.onMouseMove}
           hoverID={props.hoverID}
-          formValue={props.formValue}
         />
       </Form>
     </OverlayTrigger>

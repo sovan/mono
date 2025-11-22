@@ -31,6 +31,7 @@ const Accordions = (props: any) => {
                 onMouseUp={props.onMouseUp}
                 onMouseMove={props.onMouseMove}
                 hoverID={props.hoverID}
+                formValue={props.formValue}
               />
             </Accordion.Body>
           </Accordion.Item>

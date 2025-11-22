@@ -5,13 +5,17 @@ import { useEffect } from 'react';
 
 const Structure = () => {
   const params = useParams();
-  const { fetchJSON, pageData } = useBackend();
+  const { fetchJSON, pageData, insertData } = useBackend();
+
+  const handleForm = (formValue: any) => {
+    insertData(formValue);
+  };
 
   useEffect(() => {
-    fetchJSON('6921108d4df98f5b2e340af5');
+    fetchJSON('692140f6fd9d67bddc8f39db');
   }, []);
 
-  return <Body data={[pageData]} params={params} />;
+  return <Body data={[pageData]} params={params} formValue={handleForm} />;
 };
 
 const Structure1 = () => {

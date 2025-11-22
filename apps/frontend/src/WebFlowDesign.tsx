@@ -49,7 +49,7 @@ const WebFlowDesign = () => {
 
   useEffect(() => {
     if (isCreated) {
-      fetchJSON('6921108d4df98f5b2e340af5', 'page');
+      fetchJSON('692140f6fd9d67bddc8f39db', 'page');
     }
   }, [isCreated]);
 
@@ -121,6 +121,9 @@ const WebFlowDesign = () => {
           hoverID={mouseHoverID}
           dev={true}
           key={'page'}
+          formValue={() =>
+            console.log('Cannot submit for as this is a design frame')
+          }
         />
       </Col>
       {openProperty && (

@@ -24,6 +24,7 @@ const Rows = (props: any) => {
           hoverID={props.hoverID}
           act={props.act}
           dev={props.dev}
+          formValue={props.formValue}
         />
       </Row>
     </OverlayTrigger>
