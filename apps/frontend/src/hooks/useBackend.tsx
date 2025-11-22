@@ -66,7 +66,30 @@ const useBackend = () => {
           name: Date.now(),
           label: 'Lable not created',
         };
-
+        break;
+      case 'Password Input':
+        json = {
+          type: 'input',
+          inputType: 'password',
+          name: Date.now(),
+          label: 'Lable not created',
+        };
+        break;
+      case 'Text Area':
+        json = {
+          type: 'input',
+          inputType: 'textarea',
+          name: Date.now(),
+          label: 'Lable not created',
+        };
+        break;
+      case 'Radio':
+        json = {
+          type: 'radio',
+          name: Date.now(),
+          label: 'Lable not created',
+          contains: [],
+        };
         break;
     }
 

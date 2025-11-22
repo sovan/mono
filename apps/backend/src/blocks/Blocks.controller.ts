@@ -33,6 +33,7 @@ export class BlocksController {
       'form',
       'select',
       'accordion',
+      'radio',
     ];
     if (!allowedType.includes(createBlockDto.type))
       throw new HttpException('Allowed types: ' + allowedType, 404);
@@ -56,6 +57,32 @@ export class BlocksController {
         dbObject.validation = createBlockDto.validation;
         break;
       }
+
+      case 'radio': {
+        if (!createBlockDto.name)
+          throw new HttpException('Radio box name required', 404);
+        dbObject.name = createBlockDto.name;
+
+        if (!createBlockDto.label)
+          throw new HttpException('Radio box label required', 404);
+        dbObject.label = createBlockDto.label;
+
+        if (
+          createBlockDto.validation &&
+          typeof createBlockDto.validation !== 'object'
+        )
+          throw new HttpException('Validation should be an object only', 404);
+        dbObject.validation = createBlockDto.validation;
+
+        if (!createBlockDto.contains)
+          throw new HttpException('Contains required', 404);
+
+        if (!Array.isArray(createBlockDto.contains))
+          throw new HttpException('Contains should be an array', 404);
+        dbObject.contains = createBlockDto.contains;
+        break;
+      }
+
       case 'input': {
         const allowedInputType = ['text', 'password', 'textarea'];
         if (!createBlockDto.inputType)
@@ -233,6 +260,13 @@ export class BlocksController {
       case 'button': {
         returnData.buttonText = findBlock.buttonText;
         returnData.buttonType = findBlock.buttonType;
+        break;
+      }
+      case 'radio': {
+        returnData.name = findBlock.name;
+        returnData.label = findBlock.label;
+        returnData.validation = findBlock.validation;
+        returnData.contains = findBlock.contains;
         break;
       }
       case 'row':

@@ -8,6 +8,10 @@ const Inputs = (props: any) => {
   const toolTipsText = () => {
     if (props.data.inputType === 'text') {
       return 'Text Input';
+    } else if (props.data.inputType === 'password') {
+      return 'Password';
+    } else if (props.data.inputType === 'textarea') {
+      return 'Text Area';
     }
     return 'Plz add tooltips';
   };
