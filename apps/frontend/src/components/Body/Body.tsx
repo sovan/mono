@@ -162,6 +162,9 @@ const Body = (props: any) => {
             dataExchange={props.dataExchange}
             params={props.params}
             dev={props.dev}
+            onMouseUp={props.onMouseUp}
+            onMouseMove={props.onMouseMove}
+            hoverID={props.hoverID}
           />
         );
       default: {
