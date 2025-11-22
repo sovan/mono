@@ -63,9 +63,10 @@ const useBackend = () => {
         json = {
           type: 'input',
           inputType: 'text',
-          name: 'userName',
-          label: 'Enter user name',
+          name: Date.now(),
+          label: 'Lable not created',
         };
+
         break;
     }
 
