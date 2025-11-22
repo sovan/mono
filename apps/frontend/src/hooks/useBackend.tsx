@@ -91,6 +91,14 @@ const useBackend = () => {
           contains: [],
         };
         break;
+      case 'Check Box':
+        json = {
+          type: 'check',
+          name: Date.now(),
+          label: 'Lable not created',
+          contains: [],
+        };
+        break;
       case 'Tick':
         json = {
           type: 'tick',

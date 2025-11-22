@@ -35,6 +35,7 @@ export class BlocksController {
       'accordion',
       'radio',
       'tick',
+      'check',
     ];
     if (!allowedType.includes(createBlockDto.type))
       throw new HttpException('Allowed types: ' + allowedType, 404);
@@ -58,14 +59,13 @@ export class BlocksController {
         dbObject.validation = createBlockDto.validation;
         break;
       }
-
+      case 'check':
       case 'radio': {
-        if (!createBlockDto.name)
-          throw new HttpException('Radio box name required', 404);
+        if (!createBlockDto.name) throw new HttpException('Name required', 404);
         dbObject.name = createBlockDto.name;
 
         if (!createBlockDto.label)
-          throw new HttpException('Radio box label required', 404);
+          throw new HttpException('Label required', 404);
         dbObject.label = createBlockDto.label;
 
         if (
@@ -273,6 +273,7 @@ export class BlocksController {
         returnData.buttonType = findBlock.buttonType;
         break;
       }
+      case 'check':
       case 'radio': {
         returnData.name = findBlock.name;
         returnData.label = findBlock.label;
