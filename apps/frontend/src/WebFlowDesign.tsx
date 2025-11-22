@@ -20,6 +20,7 @@ const WebFlowDesign = () => {
     'Radio',
     'Accordian',
     'List',
+    'Tick',
   ];
   const {
     fetchJSON,
@@ -48,7 +49,7 @@ const WebFlowDesign = () => {
 
   useEffect(() => {
     if (isCreated) {
-      fetchJSON('6920fd79ceb0e4e9cb0cbf21', 'page');
+      fetchJSON('6921108d4df98f5b2e340af5', 'page');
     }
   }, [isCreated]);
 

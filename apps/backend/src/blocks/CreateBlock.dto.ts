@@ -36,6 +36,9 @@ export class CreateBlockDto {
   @IsString()
   label?: string;
 
+  @IsString()
+  value?: string;
+
   @IsObject()
   validation?: Validation;
 }

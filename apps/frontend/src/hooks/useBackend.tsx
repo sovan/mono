@@ -91,6 +91,13 @@ const useBackend = () => {
           contains: [],
         };
         break;
+      case 'Tick':
+        json = {
+          type: 'tick',
+          label: 'Add lable',
+          value: Date.now(),
+        };
+        break;
     }
 
     await axios

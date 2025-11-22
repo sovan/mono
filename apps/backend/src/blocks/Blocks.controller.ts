@@ -34,6 +34,7 @@ export class BlocksController {
       'select',
       'accordion',
       'radio',
+      'tick',
     ];
     if (!allowedType.includes(createBlockDto.type))
       throw new HttpException('Allowed types: ' + allowedType, 404);
@@ -115,6 +116,16 @@ export class BlocksController {
       case 'text': {
         if (!createBlockDto.text) throw new HttpException('Text required', 404);
         dbObject.text = createBlockDto.text;
+        break;
+      }
+
+      case 'tick': {
+        if (!createBlockDto.label)
+          throw new HttpException('Label required', 404);
+        dbObject.label = createBlockDto.label;
+        if (!createBlockDto.value)
+          throw new HttpException('Value required', 404);
+        dbObject.value = createBlockDto.value;
         break;
       }
 
@@ -266,7 +277,11 @@ export class BlocksController {
         returnData.name = findBlock.name;
         returnData.label = findBlock.label;
         returnData.validation = findBlock.validation;
-        returnData.contains = findBlock.contains;
+        returnData.contains = [];
+        for (const ID of findBlock.contains) {
+          const innerBlock = await this.getBlockRecurring(ID);
+          returnData.contains.push(innerBlock);
+        }
         break;
       }
       case 'row':
@@ -278,6 +293,12 @@ export class BlocksController {
           const innerBlock = await this.getBlockRecurring(ID);
           returnData.contains.push(innerBlock);
         }
+        break;
+      }
+
+      case 'tick': {
+        returnData.label = findBlock.label;
+        returnData.value = findBlock.value;
         break;
       }
       default:

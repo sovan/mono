@@ -27,13 +27,17 @@ const Checks = (props: any) => {
         onMouseUp={props.onMouseUp}
         onMouseMove={props.onMouseMove}
       >
-        <Form.Label>
-          {props.data.label} --- {props.data._id} --- {props.hoverID}
-        </Form.Label>
+        <Form.Label>{props.data.label}</Form.Label>
         <Body
           data={props.data.contains}
           dataExchange={props.dataExchange}
           params={props.params}
+          onMouseUp={props.onMouseUp}
+          onMouseMove={props.onMouseMove}
+          hoverID={props.hoverID}
+          formValue={props.formValue}
+          act={props.act}
+          dev={props.dev}
         />
         {props.dataExchange.errors?.[props.data.name]?.message}
       </Form.Group>
