@@ -182,6 +182,7 @@ const useBackend = () => {
         json = {
           type: oldValue.type,
           label: newValue.label,
+          name: newValue.name,
         };
         break;
       case 'tick':
@@ -191,11 +192,20 @@ const useBackend = () => {
           label: newValue.label,
         };
         break;
+      case 'radio':
+      case 'check':
+        json = {
+          type: oldValue.type,
+          name: newValue.name,
+          label: newValue.label,
+        };
+        break;
       default:
         console.log('Sovan: Update JSON is not created for ' + oldValue.type);
     }
 
     console.log(JSON.stringify(json));
+    //return;
 
     setIsCreated(false);
     await axios
