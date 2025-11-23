@@ -79,6 +79,9 @@ const Body = (props: any) => {
             act={props.act}
             dev={props.dev}
             formValue={props.formValue}
+            hoverID={props.hoverID}
+            onMouseUp={props.onMouseUp}
+            onMouseMove={props.onMouseMove}
           />
         );
       case 'link':
@@ -89,6 +92,7 @@ const Body = (props: any) => {
             params={props.params}
             dev={props.dev}
             formValue={props.formValue}
+            hoverID={props.hoverID}
           />
         );
       case 'list':

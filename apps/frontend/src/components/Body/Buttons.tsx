@@ -15,10 +15,11 @@ const Buttons = (props: any) => {
     >
       <Button
         key="button"
-        type={'submit'}
+        type={props.data.buttonType}
         onClick={handleClick}
         onMouseUp={props.onMouseUp}
         onMouseMove={props.onMouseMove}
+        id={props.data._id}
       >
         {props.data.buttonText}
       </Button>
