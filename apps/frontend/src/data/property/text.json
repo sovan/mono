@@ -33,13 +33,10 @@
                         "size": "12",
                         "contains": [
                             {
-                                "type": "select",
-                                "name": "country",
-                                "label": "Select style",
-                                "validation": {
-                                    "required": "Country required."
-                                },
-                                "pickOptionValue": "styleJSON"
+                                "type": "input",
+                                "inputType": "textarea",
+                                "name": "style",
+                                "label": "Style"
                             }
                         ]
                     },

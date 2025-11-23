@@ -1,10 +1,18 @@
 [
     {
-        "value": "s",
-        "label": "A"
+        "value": "marginTop",
+        "label": "Margin Top"
     },
     {
-        "value": "gs",
-        "label": "B"
+        "value": "marginBottom",
+        "label": "Margin Bottom"
+    },
+    {
+        "value": "marginRight",
+        "label": "Margin Right"
+    },
+    {
+        "value": "marginLeft",
+        "label": "Margin Left"
     }
 ]

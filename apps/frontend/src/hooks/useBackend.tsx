@@ -176,6 +176,7 @@ const useBackend = () => {
         json = {
           type: oldValue.type,
           text: newValue.text,
+          style: JSON.parse(newValue.style),
         };
         break;
       case 'input':
@@ -205,7 +206,6 @@ const useBackend = () => {
     }
 
     console.log(JSON.stringify(json));
-    //return;
 
     setIsCreated(false);
     await axios

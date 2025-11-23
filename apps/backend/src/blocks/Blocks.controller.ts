@@ -5,7 +5,6 @@ import {
   Get,
   Param,
   HttpException,
-  Patch,
   Delete,
 } from '@nestjs/common';
 import { BlocksService } from './Blocks.servies';
@@ -225,6 +224,7 @@ export class BlocksController {
     switch (findBlock.type) {
       case 'text': {
         returnData.text = findBlock.text;
+        returnData.style = findBlock.style;
         break;
       }
 
