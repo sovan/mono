@@ -12,14 +12,14 @@ export const devHoverContainer = {
   backgroundColor: '#c2c0c0',
 };
 
-export const style = (isDev: boolean, hovered: boolean) => {
-  if (isDev) {
-    if (hovered) {
-      return devHoverContainer;
-    } else {
-      return developmentStyle;
-    }
-  } else {
-    return productionStyle;
-  }
+export const style = (
+  isDev: boolean,
+  hovered: boolean,
+  extraParam?: object
+) => {
+  const hoverStyle = hovered
+    ? { ...devHoverContainer, ...extraParam }
+    : { ...developmentStyle, ...extraParam };
+  const prodOrDev = isDev ? hoverStyle : { ...productionStyle, ...extraParam };
+  return prodOrDev;
 };

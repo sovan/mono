@@ -6,42 +6,25 @@
                 "type": "row",
                 "contains": [
                     {
-                        "type": "text",
-                        "style": {
-                            "margin": "10px 0",
-                            "fontSize": "20px"
-                        },
-                        "text": "List pages"
-                    },
-                    {
                         "type": "col",
                         "size": "12",
                         "contains": [
                             {
                                 "type": "input",
                                 "inputType": "text",
-                                "name": "text",
-                                "label": "Text contain",
+                                "name": "label",
+                                "label": "Enter label",
                                 "validation": {
-                                    "required": "Text required."
+                                    "required": "Label required."
                                 }
                             }
                         ]
-                    },
-                    {
-                        "type": "col",
-                        "size": "12",
-                        "contains": [
-                            {
-                                "type": "select",
-                                "name": "country",
-                                "label": "Select style",
-                                "validation": {
-                                    "required": "Country required."
-                                }
-                            }
-                        ]
-                    },
+                    }
+                ]
+            },
+            {
+                "type": "row",
+                "contains": [
                     {
                         "type": "col",
                         "size": "6",

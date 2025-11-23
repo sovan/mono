@@ -49,7 +49,7 @@ const WebFlowDesign = () => {
 
   useEffect(() => {
     if (isCreated) {
-      fetchJSON('6921108d4df98f5b2e340af5', 'page');
+      fetchJSON('6922fb457f1b07dbfc2159d6', 'page');
     }
   }, [isCreated]);
 

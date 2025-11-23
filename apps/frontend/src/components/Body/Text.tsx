@@ -13,7 +13,11 @@ const Text = (props: any) => {
         id={props.data._id}
         onMouseUp={props.onMouseUp}
         onMouseMove={props.onMouseMove}
-        style={style(props.dev, props.hoverID === props.data._id)}
+        style={style(
+          props.dev,
+          props.hoverID === props.data._id,
+          props.data.style
+        )}
       >
         {props.data.text}
       </div>
