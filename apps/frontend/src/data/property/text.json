@@ -38,7 +38,8 @@
                                 "label": "Select style",
                                 "validation": {
                                     "required": "Country required."
-                                }
+                                },
+                                "pickOptionValue": "styleJSON"
                             }
                         ]
                     },
