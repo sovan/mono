@@ -298,6 +298,7 @@ export class BlocksController {
       }
 
       case 'tick': {
+        console.log(JSON.stringify(findBlock));
         returnData.label = findBlock.label;
         returnData.value = findBlock.value;
         break;

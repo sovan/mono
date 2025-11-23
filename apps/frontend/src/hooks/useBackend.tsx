@@ -184,9 +184,19 @@ const useBackend = () => {
           label: newValue.label,
         };
         break;
+      case 'tick':
+        json = {
+          type: oldValue.type,
+          value: newValue.value,
+          label: newValue.label,
+        };
+        break;
       default:
         console.log('Sovan: Update JSON is not created for ' + oldValue.type);
     }
+
+    console.log(JSON.stringify(json));
+
     setIsCreated(false);
     await axios
       .post(url + oldValue._id, json)

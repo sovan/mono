@@ -34,6 +34,9 @@ export class Block {
   name?: string;
 
   @Prop({ required: false })
+  value?: string;
+
+  @Prop({ required: false })
   label?: string;
 
   @Prop({ type: ValidationSchema })
