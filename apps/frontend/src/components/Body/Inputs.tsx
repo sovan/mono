@@ -16,12 +16,13 @@ const Inputs = (props: any) => {
     return 'Plz add tooltips';
   };
 
-  const value = (savedValue: any) => {
-    if (typeof savedValue === 'object') {
-      delete savedValue._id;
-      return JSON.stringify(savedValue);
+  const value = () => {
+    const value = props.value ? props.value[props.data.name] : '';
+    if (typeof value === 'object') {
+      delete value._id;
+      return JSON.stringify(value);
     }
-    return savedValue;
+    return value;
   };
 
   return (
@@ -52,7 +53,7 @@ const Inputs = (props: any) => {
             [props.data.name],
             props.data.validation
           )}
-          defaultValue={value(props.value[props.data.name])}
+          defaultValue={value()}
         />
         <Form.Control.Feedback type="invalid">
           <>{props.dataExchange.errors?.[props.data.name]?.message}</>
