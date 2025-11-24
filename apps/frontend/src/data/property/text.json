@@ -11,7 +11,7 @@
                             "margin": "10px 0",
                             "fontSize": "20px"
                         },
-                        "text": "List pages"
+                        "text": "Text property"
                     },
                     {
                         "type": "col",
@@ -31,6 +31,9 @@
                     {
                         "type": "col",
                         "size": "12",
+                        "style": {
+                            "marginTop": "10px"
+                        },
                         "contains": [
                             {
                                 "type": "input",

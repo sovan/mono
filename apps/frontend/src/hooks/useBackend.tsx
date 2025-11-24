@@ -176,7 +176,7 @@ const useBackend = () => {
         json = {
           type: oldValue.type,
           text: newValue.text,
-          style: JSON.parse(newValue.style),
+          style: newValue.style ? JSON.parse(newValue.style) : {},
         };
         break;
       case 'input':
@@ -184,6 +184,9 @@ const useBackend = () => {
           type: oldValue.type,
           label: newValue.label,
           name: newValue.name,
+          validation: newValue.validation
+            ? JSON.parse(newValue.validation)
+            : {},
         };
         break;
       case 'tick':
@@ -199,6 +202,12 @@ const useBackend = () => {
           type: oldValue.type,
           name: newValue.name,
           label: newValue.label,
+        };
+        break;
+      case 'button':
+        json = {
+          type: oldValue.type,
+          buttonText: newValue.buttonText,
         };
         break;
       default:

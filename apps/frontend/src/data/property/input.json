@@ -10,6 +10,25 @@
                         "size": "12",
                         "contains": [
                             {
+                                "type": "text",
+                                "style": {
+                                    "margin": "10px 0",
+                                    "fontSize": "20px"
+                                },
+                                "text": "Text input property"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "row",
+                "contains": [
+                    {
+                        "type": "col",
+                        "size": "12",
+                        "contains": [
+                            {
                                 "type": "input",
                                 "inputType": "text",
                                 "name": "label",
@@ -39,6 +58,18 @@
                                 }
                             }
                         ]
+                    }
+                ]
+            },
+            {
+                "type": "col",
+                "size": "12",
+                "contains": [
+                    {
+                        "type": "input",
+                        "inputType": "textarea",
+                        "name": "validation",
+                        "label": "Validation"
                     }
                 ]
             },

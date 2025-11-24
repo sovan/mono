@@ -65,20 +65,6 @@
                                                 "size": "4",
                                                 "contains": [
                                                     {
-                                                        "type": "select",
-                                                        "name": "country",
-                                                        "label": "Select data",
-                                                        "validation": {
-                                                            "required": "Country required."
-                                                        }
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "type": "col",
-                                                "size": "4",
-                                                "contains": [
-                                                    {
                                                         "type": "check",
                                                         "name": "likes",
                                                         "label": "Likes",

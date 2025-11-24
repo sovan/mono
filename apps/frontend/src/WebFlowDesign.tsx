@@ -59,18 +59,17 @@ const WebFlowDesign = () => {
   const handleMouseUp = (event: React.MouseEvent<HTMLInputElement>) => {
     if (!droppedID) {
       droppedID = event.currentTarget.id;
-      console.log(droppedID, selectedElement);
+      setOpenProperty(false);
       if (selectedElement === 'Page' && droppedID !== 'Page') {
         fetchJSON(droppedID, 'property');
-        setOpenProperty(true);
+        setTimeout(() => {
+          setOpenProperty(true);
+        }, 10);
       } else if (selectedElement === 'Page' && droppedID === 'Page') {
         setOpenProperty(false);
       } else {
         setOpenProperty(false);
-        switch (selectedElement) {
-          default:
-            createJSON(selectedElement, event.currentTarget.id);
-        }
+        createJSON(selectedElement, event.currentTarget.id);
       }
       setTimeout(() => {
         droppedID = '';

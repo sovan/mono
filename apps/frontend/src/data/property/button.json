@@ -12,7 +12,7 @@
                             {
                                 "type": "input",
                                 "inputType": "text",
-                                "name": "label",
+                                "name": "buttonText",
                                 "label": "Enter label",
                                 "validation": {
                                     "required": "Label required."
