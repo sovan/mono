@@ -18,6 +18,7 @@ const Inputs = (props: any) => {
 
   const value = (savedValue: any) => {
     if (typeof savedValue === 'object') {
+      delete savedValue._id;
       return JSON.stringify(savedValue);
     }
     return savedValue;

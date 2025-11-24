@@ -12,7 +12,7 @@ const Structure = () => {
   };
 
   useEffect(() => {
-    fetchJSON('6921108d4df98f5b2e340af5');
+    fetchJSON(params.id);
   }, []);
 
   return <Body data={[pageData]} params={params} formValue={handleForm} />;
@@ -33,4 +33,4 @@ const Structure1 = () => {
 
   return <Body data={fetchJSON()} params={params} />;
 };
-export default Structure1;
+export default Structure;

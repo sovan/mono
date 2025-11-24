@@ -3,8 +3,11 @@ import { Col, Row } from 'react-bootstrap';
 import Body from './components/Body/Body';
 import useBackend from './hooks/useBackend';
 import PropertyBox from './components/Others/PropertyBox';
+import { useParams } from 'react-router-dom';
 
 const WebFlowDesign = () => {
+  const params = useParams();
+
   const widget = [
     'Container',
     'Row',
@@ -49,7 +52,7 @@ const WebFlowDesign = () => {
 
   useEffect(() => {
     if (isCreated) {
-      fetchJSON('6922fb457f1b07dbfc2159d6', 'page');
+      fetchJSON(params.id, 'page');
     }
   }, [isCreated]);
 
