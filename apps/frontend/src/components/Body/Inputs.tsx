@@ -15,6 +15,14 @@ const Inputs = (props: any) => {
     }
     return 'Plz add tooltips';
   };
+
+  const value = (savedValue: any) => {
+    if (typeof savedValue === 'object') {
+      return JSON.stringify(savedValue);
+    }
+    return savedValue;
+  };
+
   return (
     <OverlayTrigger
       placement="top"
@@ -43,6 +51,7 @@ const Inputs = (props: any) => {
             [props.data.name],
             props.data.validation
           )}
+          defaultValue={value(props.value[props.data.name])}
         />
         <Form.Control.Feedback type="invalid">
           <>{props.dataExchange.errors?.[props.data.name]?.message}</>

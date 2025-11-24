@@ -20,6 +20,7 @@ const Buttons = (props: any) => {
         onMouseUp={props.onMouseUp}
         onMouseMove={props.onMouseMove}
         id={props.data._id}
+        value={props.value}
       >
         {props.data.buttonText}
       </Button>

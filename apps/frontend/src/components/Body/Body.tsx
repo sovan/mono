@@ -27,6 +27,7 @@ const Body = (props: any) => {
             formValue={props.formValue}
             act={props.act}
             dev={props.dev}
+            value={props.value}
           />
         );
       case 'row':
@@ -40,6 +41,7 @@ const Body = (props: any) => {
             hoverID={props.hoverID}
             act={props.act}
             dev={props.dev}
+            value={props.value}
             formValue={props.formValue}
           />
         );
@@ -54,6 +56,7 @@ const Body = (props: any) => {
             hoverID={props.hoverID}
             act={props.act}
             dev={props.dev}
+            value={props.value}
             formValue={props.formValue}
           />
         );
@@ -67,6 +70,7 @@ const Body = (props: any) => {
             onMouseMove={props.onMouseMove}
             hoverID={props.hoverID}
             dev={props.dev}
+            value={props.value}
             formValue={props.formValue}
           />
         );
@@ -78,6 +82,7 @@ const Body = (props: any) => {
             params={props.params}
             act={props.act}
             dev={props.dev}
+            value={props.value}
             formValue={props.formValue}
             hoverID={props.hoverID}
             onMouseUp={props.onMouseUp}
@@ -91,6 +96,7 @@ const Body = (props: any) => {
             dataExchange={props.dataExchange}
             params={props.params}
             dev={props.dev}
+            value={props.value}
             formValue={props.formValue}
             hoverID={props.hoverID}
           />
@@ -102,6 +108,7 @@ const Body = (props: any) => {
             dataExchange={props.dataExchange}
             params={props.params}
             dev={props.dev}
+            value={props.value}
             formValue={props.formValue}
           />
         );
@@ -115,6 +122,7 @@ const Body = (props: any) => {
             onMouseMove={props.onMouseMove}
             hoverID={props.hoverID}
             dev={props.dev}
+            value={props.value}
             formValue={props.formValue}
           />
         );
@@ -129,6 +137,7 @@ const Body = (props: any) => {
             hoverID={props.hoverID}
             formValue={props.formValue}
             dev={props.dev}
+            value={props.value}
             act={props.act}
           />
         );
@@ -139,6 +148,7 @@ const Body = (props: any) => {
             dataExchange={props.dataExchange}
             params={props.params}
             dev={props.dev}
+            value={props.value}
             onMouseUp={props.onMouseUp}
             onMouseMove={props.onMouseMove}
             hoverID={props.hoverID}
@@ -152,6 +162,7 @@ const Body = (props: any) => {
             dataExchange={props.dataExchange}
             params={props.params}
             dev={props.dev}
+            value={props.value}
             formValue={props.formValue}
           />
         );
@@ -163,6 +174,7 @@ const Body = (props: any) => {
             dataExchange={props.dataExchange}
             params={props.params}
             dev={props.dev}
+            value={props.value}
             onMouseUp={props.onMouseUp}
             onMouseMove={props.onMouseMove}
             hoverID={props.hoverID}
@@ -176,6 +188,7 @@ const Body = (props: any) => {
             dataExchange={props.dataExchange}
             params={props.params}
             dev={props.dev}
+            value={props.value}
             onMouseUp={props.onMouseUp}
             onMouseMove={props.onMouseMove}
             hoverID={props.hoverID}

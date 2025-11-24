@@ -26,6 +26,7 @@ const Cols = (props: any) => {
           act={props.act}
           dev={props.dev}
           formValue={props.formValue}
+          value={props.value}
         />
       </Col>
     </OverlayTrigger>

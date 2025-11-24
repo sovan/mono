@@ -25,6 +25,7 @@ const Contains = (props: any) => {
           formValue={props.formValue}
           act={props.act}
           dev={props.dev}
+          value={props.value}
         />
       </Container>
     </OverlayTrigger>

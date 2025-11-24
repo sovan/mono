@@ -36,6 +36,7 @@ const Forms = (props: any) => {
           onMouseUp={props.onMouseUp}
           onMouseMove={props.onMouseMove}
           hoverID={props.hoverID}
+          value={props.value}
         />
       </Form>
     </OverlayTrigger>

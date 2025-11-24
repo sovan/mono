@@ -38,6 +38,7 @@ const Checks = (props: any) => {
           formValue={props.formValue}
           act={props.act}
           dev={props.dev}
+          value={props.value}
         />
         {props.dataExchange.errors?.[props.data.name]?.message}
       </Form.Group>
