@@ -6,7 +6,7 @@ const Text = (props: any) => {
     <OverlayTrigger
       placement="top"
       overlay={<Tooltip id={'tooltip' + props.data._id}>Text</Tooltip>}
-      show={props.hoverID === props.data._id && props.dev}
+      show={props.hoverID === props.data._id && props.dev === true}
     >
       <div
         key={props.data._id}

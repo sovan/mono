@@ -6,7 +6,7 @@ const Contains = (props: any) => {
     <OverlayTrigger
       placement="top"
       overlay={<Tooltip id={'tooltip' + props.data._id}>Container</Tooltip>}
-      show={props.hoverID === props.data._id && props.dev}
+      show={props.hoverID === props.data._id && props.dev === true}
     >
       <Container
         onMouseUp={props.onMouseUp}

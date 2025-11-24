@@ -7,7 +7,7 @@ const Cols = (props: any) => {
     <OverlayTrigger
       placement="top"
       overlay={<Tooltip id={'tooltip' + props.data._id}>Column</Tooltip>}
-      show={props.hoverID === props.data._id && props.dev}
+      show={props.hoverID === props.data._id && props.dev === true}
     >
       <Col
         xs={props.data.size}
@@ -16,6 +16,7 @@ const Cols = (props: any) => {
         onMouseMove={props.onMouseMove}
         id={props.data._id}
       >
+        {props.dev}
         <Body
           data={props.data.contains}
           dataExchange={props.dataExchange}

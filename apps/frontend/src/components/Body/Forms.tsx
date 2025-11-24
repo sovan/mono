@@ -18,7 +18,7 @@ const Forms = (props: any) => {
     <OverlayTrigger
       placement="top"
       overlay={<Tooltip id={'tooltip' + props.data._id}>Form</Tooltip>}
-      show={props.hoverID === props.data._id && props.dev}
+      show={props.hoverID === props.data._id && props.dev === true}
     >
       <Form
         onSubmit={handleSubmit(onSubmit)}

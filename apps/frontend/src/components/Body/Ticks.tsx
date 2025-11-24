@@ -6,7 +6,7 @@ const Ticks = (props: any) => {
     <OverlayTrigger
       placement="top"
       overlay={<Tooltip id={'tooltip' + props.data._id}>Tick</Tooltip>}
-      show={props.hoverID === props.data._id && props.dev}
+      show={props.hoverID === props.data._id && props.dev === true}
     >
       <div
         style={style(props.dev, props.hoverID === props.data._id)}
