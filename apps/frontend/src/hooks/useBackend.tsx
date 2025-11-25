@@ -7,7 +7,7 @@ const useBackend = () => {
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [pageData, setPageData] = useState({});
   const [propertyData, setPropertyData] = useState({});
-  const url = 'http://localhost:3000/blocks/';
+  const url = 'http://localhost:3000/';
 
   const createJSON = async (
     droppedElement: string | undefined,
@@ -109,19 +109,19 @@ const useBackend = () => {
     }
 
     await axios
-      .post(url, json)
+      .post(url + 'blocks/', json)
       .then(async (res: any) => {
         if (res.status === 201) {
           const newID = res.data._id;
           setSubmitSuccess(true);
           await axios
-            .get(url + droppedPlace)
+            .get(url + 'blocks/' + droppedPlace)
             .then(async (res: any) => {
               const updateData = res.data;
               delete updateData['_id'];
               updateData['contains'].push(newID);
               await axios
-                .post(url + droppedPlace, updateData)
+                .post(url + 'blocks/' + droppedPlace, updateData)
                 .then(async (res: any) => {
                   if (res.status === 201) setSubmitSuccess(true);
                 })
@@ -143,7 +143,7 @@ const useBackend = () => {
   const fetchJSON = async (ID: any, type?: string) => {
     setIsLoading(true);
     await axios
-      .get(url + ID)
+      .get(url + 'blocks/' + ID)
       .then((res: any) => {
         if (res.status === 201) setSubmitSuccess(true);
         if (type === 'property') {
@@ -160,54 +160,74 @@ const useBackend = () => {
 
   const insertData = async (formValue: any) => {
     console.log(JSON.stringify(formValue));
+    await axios
+      .post(url + 'any/', formValue)
+      .then(async (res: any) => {
+        if (res.status === 201) {
+          setSubmitSuccess(true);
+        }
+      })
+      .catch(() => {
+        console.log('Error');
+      })
+      .finally(() => setIsCreated(true));
   };
 
   const updateJSON = async (newValue: any, oldValue: any) => {
+    console.log(JSON.stringify(newValue));
     let json = {};
     switch (oldValue.type) {
       case 'col':
         json = {
           type: oldValue.type,
-          size: newValue.size,
+          size: newValue.formValue.size,
           contains: oldValue.contains,
         };
         break;
       case 'text':
         json = {
           type: oldValue.type,
-          text: newValue.text,
-          style: newValue.style ? JSON.parse(newValue.style) : {},
+          text: newValue.formValue.text,
+          style: newValue.formValue.style
+            ? JSON.parse(newValue.formValue.style)
+            : {},
         };
         break;
       case 'input':
         json = {
           type: oldValue.type,
-          label: newValue.label,
-          name: newValue.name,
-          validation: newValue.validation
-            ? JSON.parse(newValue.validation)
+          label: newValue.formValue.label,
+          name: newValue.formValue.name,
+          validation: newValue.formValue.validation
+            ? JSON.parse(newValue.formValue.validation)
             : {},
         };
         break;
       case 'tick':
         json = {
           type: oldValue.type,
-          value: newValue.value,
-          label: newValue.label,
+          value: newValue.formValue.value,
+          label: newValue.formValue.label,
         };
         break;
       case 'radio':
       case 'check':
         json = {
           type: oldValue.type,
-          name: newValue.name,
-          label: newValue.label,
+          name: newValue.formValue.name,
+          label: newValue.formValue.label,
         };
         break;
       case 'button':
         json = {
           type: oldValue.type,
-          buttonText: newValue.buttonText,
+          buttonText: newValue.formValue.buttonText,
+        };
+        break;
+      case 'form':
+        json = {
+          type: oldValue.type,
+          table: newValue.formValue.table,
         };
         break;
       default:
@@ -218,7 +238,7 @@ const useBackend = () => {
 
     setIsCreated(false);
     await axios
-      .post(url + oldValue._id, json)
+      .post(url + 'blocks/' + oldValue._id, json)
       .then(async (res: any) => {
         if (res.status === 201) setSubmitSuccess(true);
       })
@@ -232,7 +252,7 @@ const useBackend = () => {
     setIsCreated(false);
     if (parent !== 'Page') {
       await axios
-        .get(url + 'actual-json/' + parent)
+        .get(url + 'blocks/' + 'actual-json/' + parent)
         .then(async (res: any) => {
           const updateData = res.data;
           delete updateData['_id'];
@@ -242,11 +262,11 @@ const useBackend = () => {
           );
           updateData['contains'] = a;
           await axios
-            .post(url + parent, updateData)
+            .post(url + 'blocks/' + parent, updateData)
             .then(async (res: any) => {
               if (res.status === 201) {
                 await axios
-                  .delete(url + oldValue._id)
+                  .delete(url + 'blocks/' + oldValue._id)
                   .then(async (res: any) => {
                     if (res.status === 201) setIsCreated(true);
                   })
@@ -265,7 +285,7 @@ const useBackend = () => {
         });
     } else {
       await axios
-        .delete(url + oldValue._id)
+        .delete(url + 'blocks/' + oldValue._id)
         .then(async (res: any) => {
           if (res.status === 201) setIsCreated(true);
         })

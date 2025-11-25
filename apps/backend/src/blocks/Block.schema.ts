@@ -40,6 +40,9 @@ export class Block {
   @Prop({ required: false })
   label?: string;
 
+  @Prop({ required: false })
+  table?: string;
+
   @Prop({ type: ValidationSchema })
   validation?: Validation;
 

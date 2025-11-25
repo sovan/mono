@@ -290,6 +290,7 @@ export class BlocksController {
       case 'container':
       case 'accordion': {
         returnData.contains = [];
+        returnData.table = findBlock.table;
         for (const ID of findBlock.contains) {
           const innerBlock = await this.getBlockRecurring(ID);
           returnData.contains.push(innerBlock);

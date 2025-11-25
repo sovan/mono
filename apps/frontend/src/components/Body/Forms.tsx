@@ -12,8 +12,8 @@ const Forms = (props: any) => {
     mode: 'onTouched',
   });
 
-  const onSubmit = async (data: any) => props.formValue(data);
-
+  const onSubmit = async (data: any) =>
+    props.formValue({ formValue: data, tableName: props.data.table });
   return (
     <OverlayTrigger
       placement="top"
