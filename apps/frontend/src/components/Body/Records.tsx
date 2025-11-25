@@ -9,7 +9,7 @@ const Records = (props: any) => {
         ))}
         {props.operations && (
           <td key="ssss">
-            <Body data={props.operations.contains} />
+            <Body data={props.operations} />
           </td>
         )}
       </tr>

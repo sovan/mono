@@ -277,18 +277,16 @@
         "contains": [
             {
                 "type": "list",
-                "operations": {
-                    "contains": [
-                        {
-                            "type": "button",
-                            "buttonText": "Edit"
-                        },
-                        {
-                            "type": "link",
-                            "linkText": "Delete"
-                        }
-                    ]
-                },
+                "operations": [
+                    {
+                        "type": "button",
+                        "buttonText": "Edit"
+                    },
+                    {
+                        "type": "link",
+                        "linkText": "Delete"
+                    }
+                ],
                 "listHeader": [
                     "First name",
                     "Last name",

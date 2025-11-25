@@ -1,6 +1,6 @@
-import { Table } from "react-bootstrap";
-import Headers from "./Headers";
-import Records from "./Records";
+import { Table } from 'react-bootstrap';
+import Headers from './Headers';
+import Records from './Records';
 
 const List = (props: any) => {
   return (

@@ -16,6 +16,14 @@ const useBackend = () => {
     setIsCreated(false);
     let json = {};
     switch (droppedElement) {
+      case 'List':
+        json = {
+          type: 'list',
+          operations: {},
+          listHeader: [],
+          listRecord: [],
+        };
+        break;
       case 'Container':
         json = {
           type: 'container',
@@ -228,6 +236,14 @@ const useBackend = () => {
         json = {
           type: oldValue.type,
           table: newValue.formValue.table,
+        };
+        break;
+      case 'list':
+        json = {
+          type: oldValue.type,
+          operations: {},
+          listHeader: [],
+          listRecord: [],
         };
         break;
       default:
