@@ -6,25 +6,13 @@
                 "type": "row",
                 "contains": [
                     {
-                        "type": "col",
-                        "size": "12",
-                        "contains": [
-                            {
-                                "type": "input",
-                                "inputType": "text",
-                                "name": "label",
-                                "label": "Enter label",
-                                "validation": {
-                                    "required": "Label required."
-                                }
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "type": "row",
-                "contains": [
+                        "type": "text",
+                        "style": {
+                            "margin": "10px 0",
+                            "fontSize": "20px"
+                        },
+                        "text": "List property"
+                    },
                     {
                         "type": "col",
                         "size": "12",
@@ -32,31 +20,29 @@
                             {
                                 "type": "input",
                                 "inputType": "text",
-                                "name": "name",
-                                "label": "Enter name",
+                                "name": "table",
+                                "label": "Table name",
                                 "validation": {
-                                    "required": "Name required."
+                                    "required": "Table name required."
                                 }
                             }
                         ]
-                    }
-                ]
-            },
-            {
-                "type": "col",
-                "size": "12",
-                "contains": [
+                    },
                     {
-                        "type": "input",
-                        "inputType": "textarea",
-                        "name": "validation",
-                        "label": "Validation"
-                    }
-                ]
-            },
-            {
-                "type": "row",
-                "contains": [
+                        "type": "col",
+                        "size": "12",
+                        "contains": [
+                            {
+                                "type": "input",
+                                "inputType": "text",
+                                "name": "listHeader",
+                                "label": "Headers",
+                                "validation": {
+                                    "required": "Headers required."
+                                }
+                            }
+                        ]
+                    },
                     {
                         "type": "col",
                         "size": "6",

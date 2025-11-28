@@ -5,7 +5,7 @@ const Records = (props: any) => {
     return (
       <tr key="ssoos">
         {data.map((data: any, index: any) => (
-          <td key="ssss">{data}</td>
+          <td key={index + '-header'}>{data}</td>
         ))}
         {props.operations && (
           <td key="ssss">

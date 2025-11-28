@@ -110,6 +110,10 @@ const Body = (props: any) => {
             dev={props.dev}
             value={props.value}
             formValue={props.formValue}
+            onMouseUp={props.onMouseUp}
+            onMouseMove={props.onMouseMove}
+            hoverID={props.hoverID}
+            act={props.act}
           />
         );
       case 'accordion':

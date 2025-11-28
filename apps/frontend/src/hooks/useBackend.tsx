@@ -19,7 +19,7 @@ const useBackend = () => {
       case 'List':
         json = {
           type: 'list',
-          operations: {},
+          operations: [],
           listHeader: [],
           listRecord: [],
         };
@@ -224,6 +224,9 @@ const useBackend = () => {
           type: oldValue.type,
           name: newValue.formValue.name,
           label: newValue.formValue.label,
+          validation: newValue.formValue.validation
+            ? JSON.parse(newValue.formValue.validation)
+            : {},
         };
         break;
       case 'button':
@@ -241,9 +244,9 @@ const useBackend = () => {
       case 'list':
         json = {
           type: oldValue.type,
-          operations: {},
-          listHeader: [],
-          listRecord: [],
+          operations: [],
+          table: newValue.formValue.table,
+          listHeader: JSON.parse(newValue.formValue.listHeader),
         };
         break;
       default:
@@ -251,6 +254,7 @@ const useBackend = () => {
     }
 
     console.log(JSON.stringify(json));
+    //return;
 
     setIsCreated(false);
     await axios

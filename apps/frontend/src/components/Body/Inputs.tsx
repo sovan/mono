@@ -1,4 +1,4 @@
-import { Form, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { FloatingLabel, Form, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { style } from '../../styles';
 
 const Inputs = (props: any) => {
@@ -39,25 +39,26 @@ const Inputs = (props: any) => {
         onMouseMove={props.onMouseMove}
         id={props.data._id}
       >
-        <Form.Label>{props.data.label}</Form.Label>
-        <Form.Control
-          isInvalid={!!props.dataExchange?.errors?.[props.data.name]}
-          isValid={
-            props.dataExchange.touchedFields?.[props.data.name] &&
-            !props.dataExchange.errors?.[props.data.name]
-          }
-          as={props.data.inputType === 'textarea' ? 'textarea' : undefined}
-          type={props.data.inputType}
-          placeholder={props.data.label}
-          {...props.dataExchange.register(
-            [props.data.name],
-            props.data.validation
-          )}
-          defaultValue={value()}
-        />
-        <Form.Control.Feedback type="invalid">
-          <>{props.dataExchange.errors?.[props.data.name]?.message}</>
-        </Form.Control.Feedback>
+        <FloatingLabel controlId={props.data._id} label={props.data.label}>
+          <Form.Control
+            isInvalid={!!props.dataExchange?.errors?.[props.data.name]}
+            isValid={
+              props.dataExchange.touchedFields?.[props.data.name] &&
+              !props.dataExchange.errors?.[props.data.name]
+            }
+            as={props.data.inputType === 'textarea' ? 'textarea' : undefined}
+            type={props.data.inputType}
+            placeholder={props.data.label}
+            {...props.dataExchange.register(
+              [props.data.name],
+              props.data.validation
+            )}
+            defaultValue={value()}
+          />
+          <Form.Control.Feedback type="invalid">
+            {props.dataExchange.errors?.[props.data.name]?.message}
+          </Form.Control.Feedback>
+        </FloatingLabel>
       </Form.Group>
     </OverlayTrigger>
   );

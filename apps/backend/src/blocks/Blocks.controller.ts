@@ -255,17 +255,15 @@ export class BlocksController {
 
       case 'list': {
         returnData.listHeader = findBlock.listHeader;
-        returnData.listHeader.push('Operation');
-        returnData.operations = {};
-        returnData.operations.contains = [];
+        returnData.operations = findBlock.operations;
+        returnData.table = findBlock.table;
         returnData.listRecord = [
-          ['Sovan', '25', 'Male'],
-          ['Luna', '31', 'Female'],
+          ['Sovan', 'Dey', 'MCA'],
+          ['Luna', 'Masanta', 'BBA'],
+          ['Sannidhya', 'Dey', '4+'],
+          ['Samriddha', 'Dey', 'Not educated'],
+          ['Sandeep', 'Kumar', 'Graduate'],
         ];
-        for (const ID of findBlock.operations) {
-          const innerBlock = await this.getBlockRecurring(ID);
-          returnData.operations.contains.push(innerBlock);
-        }
         break;
       }
       case 'button': {
@@ -333,6 +331,7 @@ export class BlocksController {
   ) {
     const isValid = mongoose.Types.ObjectId.isValid(id);
     if (!isValid) throw new HttpException('Invalid ID', 404);
+    JSON.stringify(updateBlockDto);
     const updateBlock = await this.BlockService.updateBlock(id, updateBlockDto);
     if (!updateBlock) throw new HttpException('Block not found', 404);
     return updateBlock;
