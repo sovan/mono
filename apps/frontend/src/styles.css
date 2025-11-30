@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+.sovan {
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+  border: 1px solid #000;
+}
+
+.sovan .ico {
+  content: '';
+  background: url('http://localhost:4200/assets/widget-icons/icon.jpg');
+  background-size: cover;
+  width: 170px;
+  height: 170px;
+}
+
+.S7-form {
+  margin-left: 6px;
+  margin-top: 3px;
+}
+.S7-container {
+  margin-left: -70px;
+  margin-top: 3px;
+}

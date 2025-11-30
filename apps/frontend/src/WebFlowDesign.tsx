@@ -1,30 +1,14 @@
 import { useEffect, useState } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import Body from './components/Body/Body';
 import useBackend from './hooks/useBackend';
 import PropertyBox from './components/Others/PropertyBox';
 import { useParams } from 'react-router-dom';
+import Widget from './components/Widgets/widget';
 
 const WebFlowDesign = () => {
   const params = useParams();
 
-  const widget = [
-    'Container',
-    'Row',
-    'Column',
-    'Text',
-    'Button',
-    'Form',
-    'Text Input',
-    'Password Input',
-    'Text Area',
-    'Drop Down',
-    'Check Box',
-    'Radio',
-    'Accordian',
-    'List',
-    'Tick',
-  ];
   const {
     fetchJSON,
     createJSON,
@@ -101,43 +85,39 @@ const WebFlowDesign = () => {
   };
 
   return (
-    <Row style={{ margin: '5px' }} onMouseMove={handleMouseMove}>
-      <Col xs="2" style={{ border: '1px solid #f00', borderRight: '0px' }}>
-        {widget.map((eachWidget) => (
-          <Col id={eachWidget} onMouseDown={handleMouseDown} key={eachWidget}>
-            {eachWidget}
-          </Col>
-        ))}
-      </Col>
-      <Col
-        xs={openProperty ? 8 : 10}
-        style={{ border: '1px solid #f00' }}
-        onMouseUp={handleMouseUp}
-        onMouseDown={handleMouseDown}
-        id="Page"
-      >
-        <Body
-          data={[pageData]}
+    <Container>
+      <Row onMouseMove={handleMouseMove}>
+        <Widget onMouseDown={handleMouseDown} />
+        <Col
+          xs={openProperty ? 8 : 10}
+          style={{ border: '1px solid #f00' }}
           onMouseUp={handleMouseUp}
-          onMouseMove={handleMouseMove}
-          hoverID={mouseHoverID}
-          dev={true}
-          key={'page'}
-          formValue={() =>
-            console.log('Cannot submit for as this is a design frame')
-          }
-        />
-      </Col>
-      {openProperty && (
-        <Col xs="2" style={{ border: '1px solid #f00', borderLeft: '0px' }}>
-          <PropertyBox
-            data={propertyData}
-            formValue={handleForm}
-            act={handleAction}
+          onMouseDown={handleMouseDown}
+          id="Page"
+        >
+          <Body
+            data={[pageData]}
+            onMouseUp={handleMouseUp}
+            onMouseMove={handleMouseMove}
+            hoverID={mouseHoverID}
+            dev={true}
+            key={'page'}
+            formValue={() =>
+              console.log('Cannot submit for as this is a design frame')
+            }
           />
         </Col>
-      )}
-    </Row>
+        {openProperty && (
+          <Col xs="2" style={{ border: '1px solid #f00', borderLeft: '0px' }}>
+            <PropertyBox
+              data={propertyData}
+              formValue={handleForm}
+              act={handleAction}
+            />
+          </Col>
+        )}
+      </Row>
+    </Container>
   );
 };
 export default WebFlowDesign;
