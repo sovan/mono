@@ -1,0 +1,27 @@
+{
+    "header": "Container",
+    "body": [
+        {
+            "type": "col",
+            "size": "12",
+            "contains": [
+                {
+                    "type": "arrayOfInput",
+                    "inputType": "text",
+                    "label": "Your first name",
+                    "name": "C",
+                    "validation": {
+                        "required": "Column size required."
+                    }
+                }
+            ]
+        }
+    ],
+    "footer": [
+        {
+            "type": "button",
+            "buttonType": "submit",
+            "buttonText": "Submit"
+        }
+    ]
+}

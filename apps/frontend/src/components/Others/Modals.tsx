@@ -1,25 +1,58 @@
-import { Modal } from 'react-bootstrap';
+import { Form, Modal } from 'react-bootstrap';
 import Body from '../Body/Body';
 import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 const Modals = (props: any) => {
   const [formObject, setFormObject] = useState<any>([]);
+  const {
+    register,
+    unregister,
+    reset,
+    handleSubmit,
+    formState: { errors, touchedFields },
+  } = useForm({
+    shouldFocusError: true,
+    mode: 'onTouched',
+  });
+
   useEffect(() => {
-    const res = require(`../../data/modal-column-form.json`);
-    setFormObject(res);
-    console.log('Form set');
-  }, []);
-  const dataFind = (data: any) => {
-    console.log(data);
+    if (props.modalElement) {
+      const res = require('../../data/modals/' + props.modalElement + '.json');
+      setFormObject(res);
+      console.log('Form set');
+    }
+  }, [props.modalElement]);
+
+  const onSubmit = async (data: any) => {
+    console.log(JSON.stringify(data));
   };
   return (
-    <Modal show={props.show}>
+    <Modal show={props.show} onHide={props.handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Columns in row</Modal.Title>
+        <Modal.Title>{formObject['header']}</Modal.Title>
       </Modal.Header>
-      <Modal.Body>
-        <Body data={formObject} dataExchange={dataFind} />;
-      </Modal.Body>
+
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <Modal.Body>
+          <Body
+            data={formObject['body'] || []}
+            formValue={() =>
+              console.log('Cannot submit for as this is a design frame')
+            }
+            dataExchange={{
+              touchedFields,
+              errors,
+              register,
+              unregister,
+              reset,
+            }}
+          />
+        </Modal.Body>
+        <Modal.Footer>
+          <Body data={formObject['footer'] || []} />
+        </Modal.Footer>
+      </Form>
     </Modal>
   );
 };

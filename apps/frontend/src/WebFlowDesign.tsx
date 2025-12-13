@@ -4,7 +4,8 @@ import Body from './components/Body/Body';
 import useBackend from './hooks/useBackend';
 import PropertyBox from './components/Others/PropertyBox';
 import { useParams } from 'react-router-dom';
-import Widget from './components/Widgets/widget';
+import Widget from './components/Widgets/Widget';
+import Modals from './components/Others/Modals';
 
 const WebFlowDesign = () => {
   const params = useParams();
@@ -24,6 +25,10 @@ const WebFlowDesign = () => {
   const [openProperty, setOpenProperty] = useState<boolean>(false);
   const [parentData, setParentData] = useState<string>('');
   const [mouseHoverID, setMouseHoverID] = useState<string>('');
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [modalElement, setModalElement] = useState<string | undefined>(
+    undefined
+  );
 
   let droppedID = '';
   let hoverID = '';
@@ -32,6 +37,10 @@ const WebFlowDesign = () => {
   const handleMouseDown = (event: React.MouseEvent<HTMLInputElement>) => {
     event.preventDefault();
     setSelectedElement(event.currentTarget.id);
+  };
+
+  const handleClose = () => {
+    setShowModal(false);
   };
 
   useEffect(() => {
@@ -53,7 +62,11 @@ const WebFlowDesign = () => {
         setOpenProperty(false);
       } else {
         setOpenProperty(false);
-        createJSON(selectedElement, event.currentTarget.id);
+        setModalElement(selectedElement);
+        if (selectedElement === 'Container') {
+          setShowModal(true);
+        }
+        //createJSON(selectedElement, droppedID);
       }
       setTimeout(() => {
         droppedID = '';
@@ -117,6 +130,11 @@ const WebFlowDesign = () => {
           </Col>
         )}
       </Row>
+      <Modals
+        show={showModal}
+        modalElement={modalElement}
+        handleClose={handleClose}
+      />
     </Container>
   );
 };

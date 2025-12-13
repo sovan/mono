@@ -5,6 +5,8 @@ import { style } from '../../styles';
 const Forms = (props: any) => {
   const {
     register,
+    reset,
+    unregister,
     handleSubmit,
     formState: { errors, touchedFields },
   } = useForm({
@@ -29,7 +31,7 @@ const Forms = (props: any) => {
       >
         <Body
           data={props.data.contains}
-          dataExchange={{ touchedFields, errors, register }}
+          dataExchange={{ touchedFields, errors, register, unregister, reset }}
           act={props.act}
           dev={props.dev}
           params={props.params}

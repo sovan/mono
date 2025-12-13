@@ -54,6 +54,11 @@ const Inputs = (props: any) => {
               props.data.validation
             )}
             defaultValue={value()}
+            onChange={(e) => {
+              if (props.valueEntered) {
+                props.valueEntered(props.data.name, e.currentTarget.value);
+              }
+            }}
           />
           <Form.Control.Feedback type="invalid">
             {props.dataExchange.errors?.[props.data.name]?.message}

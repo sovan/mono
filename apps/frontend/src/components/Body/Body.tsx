@@ -11,6 +11,7 @@ import Inputs from './Inputs';
 import Selects from './Selects';
 import Checks from './Checks';
 import Ticks from './Ticks';
+import ArrayOfInputs from './ArrayOfInputs';
 
 const Body = (props: any) => {
   return props.data.map((data: any) => {
@@ -188,6 +189,20 @@ const Body = (props: any) => {
       case 'tick':
         return (
           <Ticks
+            data={data}
+            dataExchange={props.dataExchange}
+            params={props.params}
+            dev={props.dev}
+            value={props.value}
+            onMouseUp={props.onMouseUp}
+            onMouseMove={props.onMouseMove}
+            hoverID={props.hoverID}
+            formValue={props.formValue}
+          />
+        );
+      case 'arrayOfInput':
+        return (
+          <ArrayOfInputs
             data={data}
             dataExchange={props.dataExchange}
             params={props.params}
