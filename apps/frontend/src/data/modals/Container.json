@@ -7,9 +7,12 @@
             "contains": [
                 {
                     "type": "arrayOfInput",
-                    "inputType": "text",
-                    "label": "Your first name",
-                    "name": "C",
+                    "header": "Add Column",
+                    "addButtonLabel": "+",
+                    "deleteButtonLabel": "-",
+                    "inputType": "number",
+                    "label": "Enter column {index} size",
+                    "name": "columnCount",
                     "validation": {
                         "required": "Column size required."
                     }

@@ -66,7 +66,7 @@ const WebFlowDesign = () => {
         if (selectedElement === 'Container') {
           setShowModal(true);
         }
-        //createJSON(selectedElement, droppedID);
+        createJSON(selectedElement, droppedID);
       }
       setTimeout(() => {
         droppedID = '';
@@ -98,44 +98,48 @@ const WebFlowDesign = () => {
   };
 
   return (
-    <Container>
-      <Row onMouseMove={handleMouseMove}>
-        <Widget onMouseDown={handleMouseDown} />
-        <Col
-          xs={openProperty ? 8 : 10}
-          style={{ border: '1px solid #f00' }}
-          onMouseUp={handleMouseUp}
-          onMouseDown={handleMouseDown}
-          id="Page"
-        >
-          <Body
-            data={[pageData]}
+    <>
+      <Container>
+        <Row onMouseMove={handleMouseMove}>
+          <Widget onMouseDown={handleMouseDown} />
+          <Col
+            xs={openProperty ? 8 : 10}
+            style={{ border: '1px solid #f00' }}
             onMouseUp={handleMouseUp}
-            onMouseMove={handleMouseMove}
-            hoverID={mouseHoverID}
-            dev={true}
-            key={'page'}
-            formValue={() =>
-              console.log('Cannot submit for as this is a design frame')
-            }
-          />
-        </Col>
-        {openProperty && (
-          <Col xs="2" style={{ border: '1px solid #f00', borderLeft: '0px' }}>
-            <PropertyBox
-              data={propertyData}
-              formValue={handleForm}
-              act={handleAction}
+            onMouseDown={handleMouseDown}
+            id="Page"
+          >
+            <Body
+              data={[pageData]}
+              onMouseUp={handleMouseUp}
+              onMouseMove={handleMouseMove}
+              hoverID={mouseHoverID}
+              dev={true}
+              key={'page'}
+              formValue={() =>
+                console.log('Cannot submit for as this is a design frame')
+              }
             />
           </Col>
-        )}
-      </Row>
-      <Modals
-        show={showModal}
-        modalElement={modalElement}
-        handleClose={handleClose}
-      />
-    </Container>
+          {openProperty && (
+            <Col xs="2" style={{ border: '1px solid #f00', borderLeft: '0px' }}>
+              <PropertyBox
+                data={propertyData}
+                formValue={handleForm}
+                act={handleAction}
+              />
+            </Col>
+          )}
+        </Row>
+      </Container>
+      {showModal && (
+        <Modals
+          show={showModal}
+          modalElement={modalElement}
+          handleClose={handleClose}
+        />
+      )}
+    </>
   );
 };
 export default WebFlowDesign;

@@ -47,9 +47,9 @@ const ArrayOfInputs = (props: any) => {
   return (
     <>
       <Row>
-        <Col>Add Column</Col>
-        <Col className="text-end">
-          <Button onClick={handleAdd}>Add</Button>
+        <Col xs={10}>{props.data.header}</Col>
+        <Col className="text-end" xs={2}>
+          <Button onClick={handleAdd}>{props.data.addButtonLabel}</Button>
         </Col>
       </Row>
       {inputNameValue.map((item, index) => {
@@ -61,7 +61,7 @@ const ArrayOfInputs = (props: any) => {
                   type: 'input',
                   inputType: props.data.inputType,
                   name: item['name'],
-                  label: props.data.label,
+                  label: props.data.label.replace('{index}', index + 1),
                   validation: props.data.validation,
                 }}
                 valueEntered={handleValue}
@@ -72,8 +72,10 @@ const ArrayOfInputs = (props: any) => {
                 formValue={props.formValue}
               />
             </Col>
-            <Col xs={2}>
-              <Button onClick={() => handleDel(index)}>Rem</Button>
+            <Col xs={2} className="text-end">
+              <Button onClick={() => handleDel(index)}>
+                {props.data.deleteButtonLabel}
+              </Button>
             </Col>
           </Row>
         );
